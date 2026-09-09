@@ -1,0 +1,4018 @@
+<style>
+    /* ==========================================================================
+       AÇIK GÖRÜŞ KOĞUŞ REHBERİ VE BULUCU - %100 SAF HTML / CSS (SIFIR JAVASCRIPT)
+       CKEditor ve CMS Tarafından Asla Silinemez, %100 Mobil Uyumlu
+       ========================================================================== */
+
+    .rehber-ana-kapsayici {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 1380px;
+        margin: 0 auto;
+        padding: 4px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: #0f172a;
+    }
+
+    .rehber-ana-kapsayici * {
+        box-sizing: border-box;
+    }
+
+    /* --- ANA PANEL KART TASARIMI --- */
+    .pro-arama-paneli {
+        background: #ffffff;
+        border: 1px solid #cbd5e1;
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 22px;
+        box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+        position: relative;
+    }
+
+    /* --- ÜST BAŞLIK ALANI --- */
+    .pro-panel-baslik-alani {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid #e2e8f0;
+        margin-bottom: 18px;
+    }
+
+    .pro-baslik-sol {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .pro-baslik-ikon {
+        font-size: 32px;
+        line-height: 1;
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        width: 52px;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        box-shadow: 0 2px 6px rgba(37, 99, 235, 0.1);
+    }
+
+    .pro-baslik-yazilari h2 {
+        margin: 0 0 4px 0;
+        font-size: 21px;
+        font-weight: 800;
+        color: #0f172a;
+        letter-spacing: -0.3px;
+    }
+
+    .pro-baslik-yazilari p {
+        margin: 0;
+        font-size: 13px;
+        color: #64748b;
+        font-weight: 500;
+    }
+
+    .pro-durum-rozet {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #ecfdf5;
+        border: 1px solid #a7f3d0;
+        color: #065f46;
+        font-size: 12.5px;
+        font-weight: 700;
+        padding: 7px 15px;
+        border-radius: 30px;
+        box-shadow: 0 2px 5px rgba(16, 185, 129, 0.1);
+    }
+
+    .pro-durum-nokta {
+        width: 9px;
+        height: 9px;
+        background: #10b981;
+        border-radius: 50%;
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.28);
+    }
+
+    /* --- YÖNLENDİRME KUTUSU (REHBER) --- */
+    .pro-rehber-bilgi {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        border: 1px solid #bae6fd;
+        border-radius: 12px;
+        padding: 13px 18px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .pro-rehber-ikon {
+        font-size: 24px;
+        flex-shrink: 0;
+    }
+
+    .pro-rehber-metin {
+        font-size: 14px;
+        color: #0369a1;
+        font-weight: 600;
+        line-height: 1.55;
+    }
+
+    .pro-rehber-metin strong {
+        color: #0c4a6e;
+    }
+
+    /* --- SIFIR JAVASCRIPT COMBOBOX / AÇILIR REHBER PANELİ --- */
+    .pro-combobox-alani {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    /* Ana Açılır Kutu (Details / Summary) */
+    .pro-ana-combobox {
+        background: #ffffff;
+        border: 2px solid #0284c7;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 4px 14px rgba(2, 132, 199, 0.08);
+        transition: all 0.2s ease;
+    }
+
+    .pro-ana-combobox[open] {
+        border-color: #0369a1;
+        box-shadow: 0 8px 25px rgba(2, 132, 199, 0.16);
+    }
+
+    .pro-combo-summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        cursor: pointer;
+        user-select: none;
+        list-style: none;
+        font-weight: 700;
+        font-size: 15.5px;
+        color: #0f172a;
+        transition: background 0.2s ease;
+    }
+
+    .pro-combo-summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .pro-combo-summary:hover {
+        background: #e2e8f0;
+    }
+
+    .pro-combo-sol {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .pro-combo-ikon {
+        font-size: 20px;
+    }
+
+    .pro-combo-ok {
+        font-size: 13px;
+        color: #0284c7;
+        background: #e0f2fe;
+        padding: 6px 10px;
+        border-radius: 8px;
+        font-weight: 800;
+        transition: transform 0.2s ease;
+    }
+
+    .pro-ana-combobox[open] .pro-combo-ok {
+        transform: rotate(180deg);
+        background: #0284c7;
+        color: #ffffff;
+    }
+
+    .pro-combo-govde {
+        padding: 16px 20px;
+        background: #ffffff;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    /* Hızlı Blok Filtreleme Linkleri */
+    .pro-blok-link-grubu {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px dashed #cbd5e1;
+    }
+
+    .pro-link-etiket {
+        font-size: 12.5px;
+        font-weight: 700;
+        color: #64748b;
+        margin-right: 4px;
+    }
+
+    .pro-blok-link {
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 800;
+        padding: 6px 12px;
+        border-radius: 20px;
+        color: #ffffff;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .pro-blok-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .link-a { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); }
+    .link-b { background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); }
+    .link-c { background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%); }
+    .link-d { background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); }
+    .link-e { background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%); }
+
+    /* Blok Blok Ayrılmış Açılır Kartlar (Akordeon Combobox) */
+    .blok-koleksiyonu {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .blok-karti {
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background: #ffffff;
+        overflow: hidden;
+        transition: border-color 0.2s ease;
+    }
+
+    .blok-karti[open] {
+        border-color: #94a3b8;
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+    }
+
+    .blok-kart-baslik {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        background: #f8fafc;
+        cursor: pointer;
+        user-select: none;
+        list-style: none;
+        transition: background 0.15s ease;
+    }
+
+    .blok-kart-baslik::-webkit-details-marker {
+        display: none;
+    }
+
+    .blok-kart-baslik:hover {
+        background: #f1f5f9;
+    }
+
+    .blok-baslik-sol {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .blok-rozet {
+        font-size: 12px;
+        font-weight: 800;
+        color: #ffffff;
+        padding: 5px 12px;
+        border-radius: 6px;
+        letter-spacing: 0.5px;
+    }
+
+    .rozet-a { background: #0284c7; }
+    .rozet-b { background: #16a34a; }
+    .rozet-c { background: #ea580c; }
+    .rozet-d { background: #7c3aed; }
+    .rozet-e { background: #0d9488; }
+
+    .blok-bilgi-metin {
+        font-size: 13px;
+        font-weight: 600;
+        color: #475569;
+    }
+
+    .blok-ok-ikon {
+        font-size: 11px;
+        color: #94a3b8;
+        transition: transform 0.2s ease;
+    }
+
+    .blok-karti[open] .blok-ok-ikon {
+        transform: rotate(180deg);
+        color: #0284c7;
+    }
+
+    /* Koğuş Seçenekleri Izgarası */
+    .pro-secenek-izgara {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+        gap: 8px;
+        padding: 14px 16px;
+        background: #ffffff;
+        max-height: 280px;
+        overflow-y: auto;
+    }
+
+    .pro-kogus-secenek {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        padding: 8px 10px;
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #0f172a;
+        transition: all 0.15s ease;
+    }
+
+    .pro-kogus-secenek:hover {
+        background: #0284c7;
+        border-color: #0284c7;
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+    }
+
+    .pro-kogus-secenek:hover .secenek-gun,
+    .pro-kogus-secenek:hover .secenek-saa {
+        color: #e0f2fe;
+    }
+
+    .secenek-no {
+        font-size: 14px;
+        font-weight: 800;
+    }
+
+    .secenek-gun {
+        font-size: 10.5px;
+        font-weight: 700;
+        color: #0369a1;
+        text-transform: uppercase;
+    }
+
+    .secenek-saa {
+        font-size: 11px;
+        font-weight: 600;
+        color: #64748b;
+    }
+
+    /* --- EN ÜSTTE AÇILAN SABİT (STICKY/FIXED) BİLGİ KARTI --- */
+    .sabit-bilgi-karti {
+        display: none;
+    }
+
+    :target .sabit-bilgi-karti {
+        display: block;
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 99999999;
+        background: #0f172a;
+        color: #ffffff;
+        padding: 18px 24px;
+        border-radius: 14px;
+        border: 2px solid #38bdf8;
+        box-shadow: 0 20px 50px rgba(15, 23, 42, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        min-width: 360px;
+        max-width: 94%;
+        animation: proKartGelis 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        backdrop-filter: blur(8px);
+    }
+
+    @keyframes proKartGelis {
+        from { opacity: 0; transform: translate(-50%, -18px) scale(0.96); }
+        to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+    }
+
+    .kart-icerik {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        text-align: left;
+    }
+
+    .kart-ust-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        padding-bottom: 10px;
+    }
+
+    .kart-rozet {
+        font-size: 11px;
+        font-weight: 800;
+        background: rgba(56, 189, 248, 0.15);
+        color: #38bdf8;
+        padding: 3px 8px;
+        border-radius: 4px;
+        letter-spacing: 0.5px;
+    }
+
+    .kart-kogus-baslik {
+        font-size: 24px;
+        font-weight: 900;
+        color: #fef08a;
+        letter-spacing: -0.5px;
+        text-shadow: 0 2px 8px rgba(254, 240, 138, 0.3);
+    }
+
+    .kart-kapat-btn {
+        color: #94a3b8;
+        font-size: 18px;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        transition: all 0.15s ease;
+        line-height: 1;
+    }
+
+    .kart-kapat-btn:hover {
+        background: #ef4444;
+        color: #ffffff;
+        border-color: #ef4444;
+        transform: scale(1.1);
+    }
+
+    .kart-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .kart-kutu {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        padding: 8px 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .kutu-lbl {
+        font-size: 10.5px;
+        color: #94a3b8;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+    }
+
+    .kutu-val {
+        font-size: 15px;
+        color: #ffffff;
+        font-weight: 800;
+    }
+
+    .kutu-val.saat-vurgu {
+        color: #38bdf8;
+    }
+
+    .kart-alt-bilgi {
+        font-size: 11.5px;
+        color: #94a3b8;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.25);
+        padding: 6px;
+        border-radius: 6px;
+    }
+
+    /* --- HEDEF KOĞUŞ (TABLO İÇİ VURGU VE YANIP SÖNME) --- */
+    :target {
+        scroll-margin-top: 140px;
+        outline: 4px solid #f59e0b !important;
+        outline-offset: 2px;
+        border-radius: 4px;
+        animation: proKogusParla 1.8s infinite alternate ease-in-out;
+        box-shadow: 0 0 20px rgba(245, 158, 11, 0.7) !important;
+    }
+
+    @keyframes proKogusParla {
+        0% {
+            background-color: #fef08a !important;
+            color: #78350f !important;
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+        }
+        100% {
+            background-color: #facc15 !important;
+            color: #000000 !important;
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.95);
+        }
+    }
+
+    /* --- KAYDIRMA İPUCU BARI --- */
+    .pro-kaydirma-bilgisi {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: #f1f5f9;
+        border: 1px dashed #cbd5e1;
+        border-radius: 8px;
+        padding: 9px 14px;
+        font-size: 13px;
+        color: #475569;
+        font-weight: 600;
+        margin-bottom: 12px;
+        text-align: center;
+    }
+
+    /* --- TABLO TAŞMA (RESPONSIVE) SARMALAYICI --- */
+    .pro-tablo-sarmalayici {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        background: #ffffff;
+        border: 1px solid #cbd5e1;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+        margin-bottom: 24px;
+    }
+
+    .pro-tablo-sarmalayici table {
+        width: 100%;
+        min-width: 1000px;
+        margin: 0 !important;
+        border-collapse: collapse !important;
+    }
+
+    /* --- MOBİL UYUMLULUK DÜZENLEMELERİ (RESPONSIVE) --- */
+    @media screen and (max-width: 768px) {
+        .pro-arama-paneli {
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+        .pro-panel-baslik-alani {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .pro-baslik-yazilari h2 {
+            font-size: 18px;
+        }
+
+        .pro-secenek-izgara {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+            padding: 10px;
+        }
+
+        :target .sabit-bilgi-karti {
+            top: 10px;
+            min-width: 92%;
+            padding: 14px 16px;
+        }
+
+        .kart-kogus-baslik {
+            font-size: 20px;
+        }
+
+        .kart-grid {
+            grid-template-columns: 1fr;
+            gap: 6px;
+        }
+
+        .kart-kutu {
+            padding: 6px 10px;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .kutu-val {
+            font-size: 13.5px;
+        }
+    }
+</style>
+
+<div class="rehber-ana-kapsayici">
+
+    <!-- =================================================================
+         AÇIK GÖRÜŞ KOĞUŞ REHBERİ VE BULUCU (SIFIR JAVASCRIPT - %100 CMS UYUMLU)
+         ================================================================= -->
+    <div class="pro-arama-paneli">
+        
+        <!-- ÜST BAŞLIK ALANI -->
+        <div class="pro-panel-baslik-alani">
+            <div class="pro-baslik-sol">
+                <div class="pro-baslik-ikon">🏛️</div>
+                <div class="pro-baslik-yazilari">
+                    <h2>AÇIK GÖRÜŞ KOĞUŞ REHBERİ VE BULUCU</h2>
+                    <p>Türkoğlu 1 Nolu L Tipi Kapalı Ceza İnfaz Kurumu</p>
+                </div>
+            </div>
+            <div class="pro-durum-rozet">
+                <span class="pro-durum-nokta"></span>
+                <span>Aktif Program (07 - 11 Eylül 2026)</span>
+            </div>
+        </div>
+
+        <!-- YÖNLENDİRME MESAJI -->
+        <div class="pro-rehber-bilgi">
+            <div class="pro-rehber-ikon">👉</div>
+            <div class="pro-rehber-metin">
+                <strong>Koğuşunuzu Seçin:</strong> Aşağıdaki blok kutularına tıklayarak açılan koğuşlardan numaranızı seçebilirsiniz. Tıkladığınızda <strong>tarih, gün ve saat bilgi kartı</strong> açılır ve sayfa tablodaki yerine kayarak <strong>parlak sarı renkle yanar</strong>.
+            </div>
+        </div>
+
+        <!-- SIFIR JAVASCRIPT AÇILIR REHBER PANELİ -->
+        <div class="pro-combobox-alani">
+
+            <!-- Hızlı Blok Seçim Çubuğu -->
+            <div class="pro-blok-link-grubu">
+                <span class="pro-link-etiket">🏢 Hızlı Blok Seçimi:</span>
+                <a href="#blok-a-kutu" class="pro-blok-link link-a">A BLOK</a>
+                <a href="#blok-b-kutu" class="pro-blok-link link-b">B BLOK</a>
+                <a href="#blok-c-kutu" class="pro-blok-link link-c">C BLOK</a>
+                <a href="#blok-d-kutu" class="pro-blok-link link-d">D BLOK</a>
+                <a href="#blok-e-kutu" class="pro-blok-link link-e">E &amp; DİĞER</a>
+            </div>
+
+            <!-- BLOK BLOK AÇILIR KARTLAR (AKORDEON / COMBOBOX) -->
+            <div class="blok-koleksiyonu">
+
+                <!-- A BLOK -->
+                <details id="blok-a-kutu" class="blok-karti" open>
+                    <summary class="blok-kart-baslik">
+                        <div class="blok-baslik-sol">
+                            <span class="blok-rozet rozet-a">A BLOK</span>
+                            <span class="blok-bilgi-metin">20 Koğuş (A-1 ile A-20 arası) • Listeyi Aç / Kapat</span>
+                        </div>
+                        <span class="blok-ok-ikon">▼</span>
+                    </summary>
+                    <div class="pro-secenek-izgara">
+                        <a href="#a-1" class="pro-kogus-secenek">
+            <span class="secenek-no">A-1</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">11:00 - 11:50</span>
+        </a>
+                        <a href="#a-2" class="pro-kogus-secenek">
+            <span class="secenek-no">A-2</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#a-3" class="pro-kogus-secenek">
+            <span class="secenek-no">A-3</span>
+            <span class="secenek-gun">CUMA</span>
+            <span class="secenek-saa">15:30 - 16:20</span>
+        </a>
+                        <a href="#a-4" class="pro-kogus-secenek">
+            <span class="secenek-no">A-4</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">13:30 - 14:20</span>
+        </a>
+                        <a href="#a-5" class="pro-kogus-secenek">
+            <span class="secenek-no">A-5</span>
+            <span class="secenek-gun">SALI</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#a-6" class="pro-kogus-secenek">
+            <span class="secenek-no">A-6</span>
+            <span class="secenek-gun">SALI</span>
+            <span class="secenek-saa">15:30 - 16:20</span>
+        </a>
+                        <a href="#a-7" class="pro-kogus-secenek">
+            <span class="secenek-no">A-7</span>
+            <span class="secenek-gun">SALI</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#a-8" class="pro-kogus-secenek">
+            <span class="secenek-no">A-8</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">09:00 - 09:50</span>
+        </a>
+                        <a href="#a-9" class="pro-kogus-secenek">
+            <span class="secenek-no">A-9</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">15:30 - 16:20</span>
+        </a>
+                        <a href="#a-10" class="pro-kogus-secenek">
+            <span class="secenek-no">A-10</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">09:00 - 09:50</span>
+        </a>
+                        <a href="#a-11" class="pro-kogus-secenek">
+            <span class="secenek-no">A-11</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">09:00 - 09:50</span>
+        </a>
+                        <a href="#a-12" class="pro-kogus-secenek">
+            <span class="secenek-no">A-12</span>
+            <span class="secenek-gun">SALI</span>
+            <span class="secenek-saa">13:30 - 14:20</span>
+        </a>
+                        <a href="#a-13" class="pro-kogus-secenek">
+            <span class="secenek-no">A-13</span>
+            <span class="secenek-gun">CUMA</span>
+            <span class="secenek-saa">15:30 - 16:20</span>
+        </a>
+                        <a href="#a-14" class="pro-kogus-secenek">
+            <span class="secenek-no">A-14</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">15:30 - 16:20</span>
+        </a>
+                        <a href="#a-15" class="pro-kogus-secenek">
+            <span class="secenek-no">A-15</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#a-16" class="pro-kogus-secenek">
+            <span class="secenek-no">A-16</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#a-17" class="pro-kogus-secenek">
+            <span class="secenek-no">A-17</span>
+            <span class="secenek-gun">SALI</span>
+            <span class="secenek-saa">11:00 - 11:50</span>
+        </a>
+                        <a href="#a-18" class="pro-kogus-secenek">
+            <span class="secenek-no">A-18</span>
+            <span class="secenek-gun">CUMA</span>
+            <span class="secenek-saa">09:00 - 09:50</span>
+        </a>
+                        <a href="#a-19" class="pro-kogus-secenek">
+            <span class="secenek-no">A-19</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#a-20" class="pro-kogus-secenek">
+            <span class="secenek-no">A-20</span>
+            <span class="secenek-gun">CUMA</span>
+            <span class="secenek-saa">11:00 - 11:50</span>
+        </a>
+                    </div>
+                </details>
+
+                <!-- B BLOK -->
+                <details id="blok-b-kutu" class="blok-karti">
+                    <summary class="blok-kart-baslik">
+                        <div class="blok-baslik-sol">
+                            <span class="blok-rozet rozet-b">B BLOK</span>
+                            <span class="blok-bilgi-metin">22 Koğuş (B-1 ile B-24 arası) • Listeyi Aç / Kapat</span>
+                        </div>
+                        <span class="blok-ok-ikon">▼</span>
+                    </summary>
+                    <div class="pro-secenek-izgara">
+                        <a href="#b-1" class="pro-kogus-secenek">
+            <span class="secenek-no">B-1</span>
+            <span class="secenek-gun">SALI</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#b-2" class="pro-kogus-secenek">
+            <span class="secenek-no">B-2</span>
+            <span class="secenek-gun">SALI</span>
+            <span class="secenek-saa">11:00 - 11:50</span>
+        </a>
+                        <a href="#b-3" class="pro-kogus-secenek">
+            <span class="secenek-no">B-3</span>
+            <span class="secenek-gun">CUMA</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#b-4" class="pro-kogus-secenek">
+            <span class="secenek-no">B-4</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">13:30 - 14:20</span>
+        </a>
+                        <a href="#b-5" class="pro-kogus-secenek">
+            <span class="secenek-no">B-5</span>
+            <span class="secenek-gun">CUMA</span>
+            <span class="secenek-saa">11:00 - 11:50</span>
+        </a>
+                        <a href="#b-6" class="pro-kogus-secenek">
+            <span class="secenek-no">B-6</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#b-7" class="pro-kogus-secenek">
+            <span class="secenek-no">B-7</span>
+            <span class="secenek-gun">CUMA</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#b-8" class="pro-kogus-secenek">
+            <span class="secenek-no">B-8</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#b-9" class="pro-kogus-secenek">
+            <span class="secenek-no">B-9</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#b-10" class="pro-kogus-secenek">
+            <span class="secenek-no">B-10</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">11:00 - 11:50</span>
+        </a>
+                        <a href="#b-11" class="pro-kogus-secenek">
+            <span class="secenek-no">B-11</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">11:00 - 11:50</span>
+        </a>
+                        <a href="#b-12" class="pro-kogus-secenek">
+            <span class="secenek-no">B-12</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">13:30 - 14:20</span>
+        </a>
+                        <a href="#b-13" class="pro-kogus-secenek">
+            <span class="secenek-no">B-13</span>
+            <span class="secenek-gun">CUMA</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#b-14" class="pro-kogus-secenek">
+            <span class="secenek-no">B-14</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">13:30 - 14:20</span>
+        </a>
+                        <a href="#b-15" class="pro-kogus-secenek">
+            <span class="secenek-no">B-15</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">11:00 - 11:50</span>
+        </a>
+                        <a href="#b-16" class="pro-kogus-secenek">
+            <span class="secenek-no">B-16</span>
+            <span class="secenek-gun">SALI</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#b-17" class="pro-kogus-secenek">
+            <span class="secenek-no">B-17</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#b-18" class="pro-kogus-secenek">
+            <span class="secenek-no">B-18</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">11:00 - 11:50</span>
+        </a>
+                        <a href="#b-19" class="pro-kogus-secenek">
+            <span class="secenek-no">B-19</span>
+            <span class="secenek-gun">SALI</span>
+            <span class="secenek-saa">15:30 - 16:20</span>
+        </a>
+                        <a href="#b-20" class="pro-kogus-secenek">
+            <span class="secenek-no">B-20</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">11:00 - 11:50</span>
+        </a>
+                        <a href="#b-21" class="pro-kogus-secenek">
+            <span class="secenek-no">B-21</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">15:30 - 16:20</span>
+        </a>
+                        <a href="#b-23" class="pro-kogus-secenek">
+            <span class="secenek-no">B-23</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">13:30 - 14:20</span>
+        </a>
+                        <a href="#b-24" class="pro-kogus-secenek">
+            <span class="secenek-no">B-24</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">13:30 - 14:20</span>
+        </a>
+                    </div>
+                </details>
+
+                <!-- C BLOK -->
+                <details id="blok-c-kutu" class="blok-karti">
+                    <summary class="blok-kart-baslik">
+                        <div class="blok-baslik-sol">
+                            <span class="blok-rozet rozet-c">C BLOK</span>
+                            <span class="blok-bilgi-metin">20 Koğuş (C-1 ile C-20 arası) • Listeyi Aç / Kapat</span>
+                        </div>
+                        <span class="blok-ok-ikon">▼</span>
+                    </summary>
+                    <div class="pro-secenek-izgara">
+                        <a href="#c-1" class="pro-kogus-secenek">
+            <span class="secenek-no">C-1</span>
+            <span class="secenek-gun">CUMA</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#c-2" class="pro-kogus-secenek">
+            <span class="secenek-no">C-2</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">09:00 - 09:50</span>
+        </a>
+                        <a href="#c-3" class="pro-kogus-secenek">
+            <span class="secenek-no">C-3</span>
+            <span class="secenek-gun">SALI</span>
+            <span class="secenek-saa">09:00 - 09:50</span>
+        </a>
+                        <a href="#c-4" class="pro-kogus-secenek">
+            <span class="secenek-no">C-4</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">09:00 - 09:50</span>
+        </a>
+                        <a href="#c-5" class="pro-kogus-secenek">
+            <span class="secenek-no">C-5</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">15:30 - 16:20</span>
+        </a>
+                        <a href="#c-6" class="pro-kogus-secenek">
+            <span class="secenek-no">C-6</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">13:30 - 14:20</span>
+        </a>
+                        <a href="#c-7" class="pro-kogus-secenek">
+            <span class="secenek-no">C-7</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#c-8" class="pro-kogus-secenek">
+            <span class="secenek-no">C-8</span>
+            <span class="secenek-gun">SALI</span>
+            <span class="secenek-saa">09:00 - 09:50</span>
+        </a>
+                        <a href="#c-9" class="pro-kogus-secenek">
+            <span class="secenek-no">C-9</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">09:00 - 09:50</span>
+        </a>
+                        <a href="#c-10" class="pro-kogus-secenek">
+            <span class="secenek-no">C-10</span>
+            <span class="secenek-gun">SALI</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#c-11" class="pro-kogus-secenek">
+            <span class="secenek-no">C-11</span>
+            <span class="secenek-gun">CUMA</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#c-12" class="pro-kogus-secenek">
+            <span class="secenek-no">C-12</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#c-13" class="pro-kogus-secenek">
+            <span class="secenek-no">C-13</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">15:30 - 16:20</span>
+        </a>
+                        <a href="#c-14" class="pro-kogus-secenek">
+            <span class="secenek-no">C-14</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#c-15" class="pro-kogus-secenek">
+            <span class="secenek-no">C-15</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">09:00 - 09:50</span>
+        </a>
+                        <a href="#c-16" class="pro-kogus-secenek">
+            <span class="secenek-no">C-16</span>
+            <span class="secenek-gun">—</span>
+            <span class="secenek-saa">—</span>
+        </a>
+                        <a href="#c-17" class="pro-kogus-secenek">
+            <span class="secenek-no">C-17</span>
+            <span class="secenek-gun">—</span>
+            <span class="secenek-saa">—</span>
+        </a>
+                        <a href="#c-18" class="pro-kogus-secenek">
+            <span class="secenek-no">C-18</span>
+            <span class="secenek-gun">—</span>
+            <span class="secenek-saa">—</span>
+        </a>
+                        <a href="#c-19" class="pro-kogus-secenek">
+            <span class="secenek-no">C-19</span>
+            <span class="secenek-gun">—</span>
+            <span class="secenek-saa">—</span>
+        </a>
+                        <a href="#c-20" class="pro-kogus-secenek">
+            <span class="secenek-no">C-20</span>
+            <span class="secenek-gun">—</span>
+            <span class="secenek-saa">—</span>
+        </a>
+                    </div>
+                </details>
+
+                <!-- D BLOK -->
+                <details id="blok-d-kutu" class="blok-karti">
+                    <summary class="blok-kart-baslik">
+                        <div class="blok-baslik-sol">
+                            <span class="blok-rozet rozet-d">D BLOK</span>
+                            <span class="blok-bilgi-metin">24 Koğuş (D-1 ile D-24 arası) • Listeyi Aç / Kapat</span>
+                        </div>
+                        <span class="blok-ok-ikon">▼</span>
+                    </summary>
+                    <div class="pro-secenek-izgara">
+                        <a href="#d-1" class="pro-kogus-secenek">
+            <span class="secenek-no">D-1</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">13:30 - 14:20</span>
+        </a>
+                        <a href="#d-2" class="pro-kogus-secenek">
+            <span class="secenek-no">D-2</span>
+            <span class="secenek-gun">SALI</span>
+            <span class="secenek-saa">13:30 - 14:20</span>
+        </a>
+                        <a href="#d-3" class="pro-kogus-secenek">
+            <span class="secenek-no">D-3</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#d-4" class="pro-kogus-secenek">
+            <span class="secenek-no">D-4</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">15:30 - 16:20</span>
+        </a>
+                        <a href="#d-5" class="pro-kogus-secenek">
+            <span class="secenek-no">D-5</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#d-6" class="pro-kogus-secenek">
+            <span class="secenek-no">D-6</span>
+            <span class="secenek-gun">—</span>
+            <span class="secenek-saa">—</span>
+        </a>
+                        <a href="#d-7" class="pro-kogus-secenek">
+            <span class="secenek-no">D-7</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#d-8" class="pro-kogus-secenek">
+            <span class="secenek-no">D-8</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#d-9" class="pro-kogus-secenek">
+            <span class="secenek-no">D-9</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">15:30 - 16:20</span>
+        </a>
+                        <a href="#d-10" class="pro-kogus-secenek">
+            <span class="secenek-no">D-10</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#d-11" class="pro-kogus-secenek">
+            <span class="secenek-no">D-11</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#d-12" class="pro-kogus-secenek">
+            <span class="secenek-no">D-12</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">13:30 - 14:20</span>
+        </a>
+                        <a href="#d-13" class="pro-kogus-secenek">
+            <span class="secenek-no">D-13</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">11:00 - 11:50</span>
+        </a>
+                        <a href="#d-14" class="pro-kogus-secenek">
+            <span class="secenek-no">D-14</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#d-15" class="pro-kogus-secenek">
+            <span class="secenek-no">D-15</span>
+            <span class="secenek-gun">SALI</span>
+            <span class="secenek-saa">09:00 - 09:50</span>
+        </a>
+                        <a href="#d-16" class="pro-kogus-secenek">
+            <span class="secenek-no">D-16</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#d-17" class="pro-kogus-secenek">
+            <span class="secenek-no">D-17</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">15:30 - 16:20</span>
+        </a>
+                        <a href="#d-18" class="pro-kogus-secenek">
+            <span class="secenek-no">D-18</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">15:30 - 16:20</span>
+        </a>
+                        <a href="#d-19" class="pro-kogus-secenek">
+            <span class="secenek-no">D-19</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#d-20" class="pro-kogus-secenek">
+            <span class="secenek-no">D-20</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#d-21" class="pro-kogus-secenek">
+            <span class="secenek-no">D-21</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">15:30 - 16:20</span>
+        </a>
+                        <a href="#d-22" class="pro-kogus-secenek">
+            <span class="secenek-no">D-22</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">13:30 - 14:20</span>
+        </a>
+                        <a href="#d-23" class="pro-kogus-secenek">
+            <span class="secenek-no">D-23</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">09:00 - 09:50</span>
+        </a>
+                        <a href="#d-24" class="pro-kogus-secenek">
+            <span class="secenek-no">D-24</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">11:00 - 11:50</span>
+        </a>
+                    </div>
+                </details>
+
+                <!-- E & DİĞER BLOKLAR -->
+                <details id="blok-e-kutu" class="blok-karti">
+                    <summary class="blok-kart-baslik">
+                        <div class="blok-baslik-sol">
+                            <span class="blok-rozet rozet-e">E &amp; DİĞER</span>
+                            <span class="blok-bilgi-metin">20 Koğuş (E-1 - E-16, G-1, G-2, R-1, R-2) • Listeyi Aç / Kapat</span>
+                        </div>
+                        <span class="blok-ok-ikon">▼</span>
+                    </summary>
+                    <div class="pro-secenek-izgara">
+                        <a href="#e-1" class="pro-kogus-secenek">
+            <span class="secenek-no">E-1 (ÇOCUK)</span>
+            <span class="secenek-gun">CUMA</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#e-2" class="pro-kogus-secenek">
+            <span class="secenek-no">E-2</span>
+            <span class="secenek-gun">PERŞEMBE</span>
+            <span class="secenek-saa">11:00 - 11:50</span>
+        </a>
+                        <a href="#e-3" class="pro-kogus-secenek">
+            <span class="secenek-no">E-3</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">11:00 - 11:50</span>
+        </a>
+                        <a href="#e-4" class="pro-kogus-secenek">
+            <span class="secenek-no">E-4</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">09:00 - 09:50</span>
+        </a>
+                        <a href="#e-5" class="pro-kogus-secenek">
+            <span class="secenek-no">E-5</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">11:00 - 11:50</span>
+        </a>
+                        <a href="#e-6" class="pro-kogus-secenek">
+            <span class="secenek-no">E-6</span>
+            <span class="secenek-gun">SALI</span>
+            <span class="secenek-saa">13:30 - 14:20</span>
+        </a>
+                        <a href="#e-7" class="pro-kogus-secenek">
+            <span class="secenek-no">E-7</span>
+            <span class="secenek-gun">ÇARŞAMBA</span>
+            <span class="secenek-saa">15:30 - 16:20</span>
+        </a>
+                        <a href="#e-8" class="pro-kogus-secenek">
+            <span class="secenek-no">E-8</span>
+            <span class="secenek-gun">SALI</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#e-9" class="pro-kogus-secenek">
+            <span class="secenek-no">E-9</span>
+            <span class="secenek-gun">CUMA</span>
+            <span class="secenek-saa">15:30 - 16:20</span>
+        </a>
+                        <a href="#e-10" class="pro-kogus-secenek">
+            <span class="secenek-no">E-10</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#e-11" class="pro-kogus-secenek">
+            <span class="secenek-no">E-11</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">10:00 - 10:50</span>
+        </a>
+                        <a href="#e-12" class="pro-kogus-secenek">
+            <span class="secenek-no">E-12</span>
+            <span class="secenek-gun">CUMA</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#e-13" class="pro-kogus-secenek">
+            <span class="secenek-no">E-13</span>
+            <span class="secenek-gun">PAZARTESİ</span>
+            <span class="secenek-saa">13:30 - 14:20</span>
+        </a>
+                        <a href="#e-14" class="pro-kogus-secenek">
+            <span class="secenek-no">E-14</span>
+            <span class="secenek-gun">CUMA</span>
+            <span class="secenek-saa">09:00 - 09:50</span>
+        </a>
+                        <a href="#e-15" class="pro-kogus-secenek">
+            <span class="secenek-no">E-15</span>
+            <span class="secenek-gun">SALI</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#e-16" class="pro-kogus-secenek">
+            <span class="secenek-no">E-16</span>
+            <span class="secenek-gun">SALI</span>
+            <span class="secenek-saa">11:00 - 11:50</span>
+        </a>
+                        <a href="#g-1" class="pro-kogus-secenek">
+            <span class="secenek-no">G-1</span>
+            <span class="secenek-gun">CUMA</span>
+            <span class="secenek-saa">13:30 - 14:20</span>
+        </a>
+                        <a href="#g-2" class="pro-kogus-secenek">
+            <span class="secenek-no">G-2</span>
+            <span class="secenek-gun">CUMA</span>
+            <span class="secenek-saa">13:30 - 14:20</span>
+        </a>
+                        <a href="#r-1" class="pro-kogus-secenek">
+            <span class="secenek-no">R-1</span>
+            <span class="secenek-gun">CUMA</span>
+            <span class="secenek-saa">14:30 - 15:20</span>
+        </a>
+                        <a href="#r-2" class="pro-kogus-secenek">
+            <span class="secenek-no">R-2</span>
+            <span class="secenek-gun">CUMA</span>
+            <span class="secenek-saa">13:30 - 14:20</span>
+        </a>
+                    </div>
+                </details>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- TABLO KAYDIRMA İPUCU -->
+    <div class="pro-kaydirma-bilgisi">
+        <span>👈</span>
+        <span>Tabloyu sağa ve sola kaydırarak tüm gün ve saatleri inceleyebilirsiniz</span>
+        <span>👉</span>
+    </div>
+
+    <!-- ZİYARET TABLOSU -->
+    <div class="pro-tablo-sarmalayici">
+<table border="1" cellpadding="8" cellspacing="0" class="program-table">
+<tbody>
+<tr style="background-color:#1e293b;color:#ffffff;">
+<td colspan="13" style="padding:14px;border:1px solid #333;background:#1e293b;color:#fff;text-align:center;">
+<span style="display:block;font-size:13px;font-weight:bold;color:#cbd5e1;letter-spacing:1px;margin-bottom:3px;">T.C. ADALET BAKANLIĞI</span>
+<span style="display:block;font-size:16px;font-weight:bold;color:#fff;margin-bottom:3px;">TÜRKOĞLU 1 NOLU L TİPİ KAPALI CEZA İNFAZ KURUMU</span>
+<span style="display:block;font-size:14px;font-weight:bold;color:#38bdf8;">AÇIK ZİYARET PROGRAMI</span>
+</td>
+</tr>
+<tr style="background-color:#991b1b;color:#fff;">
+<td colspan="13" style="padding:11px;font-size:18px;font-weight:bold;border:1px solid #333;background:#991b1b;color:#fff;text-align:center;letter-spacing:0.5px;">
+                        07 - 11 EYLÜL 2026 TARİHLİ AÇIK GÖRÜŞ ZİYARET PROGRAMI
+                    </td>
+</tr>
+<tr style="background-color:#334155;color:#fff;">
+<td colspan="2" rowspan="2" style="padding:8px;border:1px solid #333;font-size:13.5px;background:#1e293b;color:#fff;text-align:center;white-space:nowrap;">Görüş Saati ▼<br/><span style="font-size:12px;color:#cbd5e1;">Tarih=&gt;</span></td>
+<td colspan="3" style="padding:8px;border:1px solid #333;font-size:14px;font-weight:bold;background:#334155;color:#fff;text-align:center;">7.09.2026</td>
+<td colspan="2" style="padding:8px;border:1px solid #333;font-size:14px;font-weight:bold;background:#334155;color:#fff;text-align:center;">8.09.2026</td>
+<td colspan="2" style="padding:8px;border:1px solid #333;font-size:14px;font-weight:bold;background:#334155;color:#fff;text-align:center;">9.09.2026</td>
+<td colspan="2" style="padding:8px;border:1px solid #333;font-size:14px;font-weight:bold;background:#334155;color:#fff;text-align:center;">10.09.2026</td>
+<td colspan="2" style="padding:8px;border:1px solid #333;font-size:14px;font-weight:bold;background:#334155;color:#fff;text-align:center;">11.09.2026</td>
+</tr>
+<tr style="background-color:#475569;color:#fff;">
+<td colspan="3" style="padding:8px;border:1px solid #333;font-size:15px;font-weight:bold;background:#475569;color:#fff;text-align:center;">PAZARTESİ</td>
+<td colspan="2" style="padding:8px;border:1px solid #333;font-size:15px;font-weight:bold;background:#475569;color:#fff;text-align:center;">SALI</td>
+<td colspan="2" style="padding:8px;border:1px solid #333;font-size:15px;font-weight:bold;background:#475569;color:#fff;text-align:center;">ÇARŞAMBA</td>
+<td colspan="2" style="padding:8px;border:1px solid #333;font-size:15px;font-weight:bold;background:#475569;color:#fff;text-align:center;">PERŞEMBE</td>
+<td colspan="2" style="padding:8px;border:1px solid #333;font-size:15px;font-weight:bold;background:#475569;color:#fff;text-align:center;">CUMA</td>
+</tr>
+<!-- 09:00 - 09:50 -->
+<tr>
+<td colspan="2" style="padding:10px 4px;border:1px solid #333;background:#0f172a;color:#38bdf8;font-weight:bold;font-size:13.5px;text-align:center;white-space:nowrap;">09:00 - 09:50</td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0f9ff;color:#0369a1;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PAZARTESİ" data-s="09:00 - 09:50" data-t="7.09.2026" id="a-8">A-8
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-8</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">09:00 - 09:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0f9ff;color:#0369a1;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PAZARTESİ" data-s="09:00 - 09:50" data-t="7.09.2026" id="a-10">A-10
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-10</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">09:00 - 09:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0f9ff;color:#0369a1;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PAZARTESİ" data-s="09:00 - 09:50" data-t="7.09.2026" id="c-4">C-4
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">C-4</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">09:00 - 09:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0fdf4;color:#15803d;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="SALI" data-s="09:00 - 09:50" data-t="8.09.2026" id="c-8">C-8
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">C-8</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">09:00 - 09:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0fdf4;color:#15803d;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="SALI" data-s="09:00 - 09:50" data-t="8.09.2026" id="c-3">C-3
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">C-3</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">09:00 - 09:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="SALI" data-s="09:00 - 09:50" data-t="8.09.2026" id="d-15">D-15
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-15</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">09:00 - 09:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fff7ed;color:#c2410c;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="ÇARŞAMBA" data-s="09:00 - 09:50" data-t="9.09.2026" id="c-9">C-9
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">C-9</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">09:00 - 09:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="ÇARŞAMBA" data-s="09:00 - 09:50" data-t="9.09.2026" id="e-4">E-4
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">E-4</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">09:00 - 09:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fff7ed;color:#c2410c;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="ÇARŞAMBA" data-s="09:00 - 09:50" data-t="9.09.2026" id="a-11">A-11
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-11</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">09:00 - 09:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fefce8;color:#a16207;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PERŞEMBE" data-s="09:00 - 09:50" data-t="10.09.2026" id="c-2">C-2
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">C-2</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">09:00 - 09:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fefce8;color:#a16207;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PERŞEMBE" data-s="09:00 - 09:50" data-t="10.09.2026" id="c-15">C-15
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">C-15</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">09:00 - 09:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="PERŞEMBE" data-s="09:00 - 09:50" data-t="10.09.2026" id="d-23">D-23
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-23</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">09:00 - 09:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f8fafc;color:#334155;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="CUMA" data-s="09:00 - 09:50" data-t="11.09.2026" id="e-14">E-14
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">E-14</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">11.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">CUMA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">09:00 - 09:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f8fafc;color:#334155;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="CUMA" data-s="09:00 - 09:50" data-t="11.09.2026" id="a-18">A-18
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-18</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">11.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">CUMA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">09:00 - 09:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+</tr>
+<!-- 10:00 - 10:50 -->
+<tr>
+<td colspan="2" style="padding:10px 4px;border:1px solid #333;background:#0f172a;color:#38bdf8;font-weight:bold;font-size:13.5px;text-align:center;white-space:nowrap;">10:00 - 10:50</td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0f9ff;color:#0369a1;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PAZARTESİ" data-s="10:00 - 10:50" data-t="7.09.2026" id="d-11">D-11
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-11</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0f9ff;color:#0369a1;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PAZARTESİ" data-s="10:00 - 10:50" data-t="7.09.2026" id="e-11">E-11
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">E-11</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0f9ff;color:#0369a1;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PAZARTESİ" data-s="10:00 - 10:50" data-t="7.09.2026" id="c-14">C-14
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">C-14</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0fdf4;color:#15803d;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="SALI" data-s="10:00 - 10:50" data-t="8.09.2026" id="e-8">E-8
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">E-8</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="SALI" data-s="10:00 - 10:50" data-t="8.09.2026" id="b-1">B-1
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-1</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0fdf4;color:#15803d;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="SALI" data-s="10:00 - 10:50" data-t="8.09.2026" id="a-5">A-5
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-5</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="SALI" data-s="10:00 - 10:50" data-t="8.09.2026" id="b-16">B-16
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-16</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fff7ed;color:#c2410c;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="ÇARŞAMBA" data-s="10:00 - 10:50" data-t="9.09.2026" id="d-19">D-19
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-19</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="ÇARŞAMBA" data-s="10:00 - 10:50" data-t="9.09.2026" id="a-15">A-15
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-15</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fff7ed;color:#c2410c;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="ÇARŞAMBA" data-s="10:00 - 10:50" data-t="9.09.2026" id="d-10">D-10
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-10</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="ÇARŞAMBA" data-s="10:00 - 10:50" data-t="9.09.2026" id="d-14">D-14
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-14</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fefce8;color:#a16207;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PERŞEMBE" data-s="10:00 - 10:50" data-t="10.09.2026" id="d-20">D-20
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-20</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="PERŞEMBE" data-s="10:00 - 10:50" data-t="10.09.2026" id="c-7">C-7
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">C-7</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fefce8;color:#a16207;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PERŞEMBE" data-s="10:00 - 10:50" data-t="10.09.2026" id="c-12">C-12
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">C-12</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="PERŞEMBE" data-s="10:00 - 10:50" data-t="10.09.2026" id="b-8">B-8
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-8</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f8fafc;color:#334155;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="CUMA" data-s="10:00 - 10:50" data-t="11.09.2026" id="b-3">B-3
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-3</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">11.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">CUMA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="CUMA" data-s="10:00 - 10:50" data-t="11.09.2026" id="e-1">E-1 (ÇOCUK)
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">E-1 (ÇOCUK)</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">11.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">CUMA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f8fafc;color:#334155;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="CUMA" data-s="10:00 - 10:50" data-t="11.09.2026" id="c-11">C-11
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">C-11</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">11.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">CUMA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="CUMA" data-s="10:00 - 10:50" data-t="11.09.2026" id="b-13">B-13
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-13</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">11.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">CUMA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">10:00 - 10:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+</tr>
+<!-- 11:00 - 11:50 -->
+<tr>
+<td colspan="2" style="padding:10px 4px;border:1px solid #333;background:#0f172a;color:#38bdf8;font-weight:bold;font-size:13.5px;text-align:center;white-space:nowrap;">11:00 - 11:50</td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0f9ff;color:#0369a1;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PAZARTESİ" data-s="11:00 - 11:50" data-t="7.09.2026" id="b-11">B-11
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-11</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">11:00 - 11:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0f9ff;color:#0369a1;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PAZARTESİ" data-s="11:00 - 11:50" data-t="7.09.2026" id="a-1">A-1
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-1</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">11:00 - 11:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0f9ff;color:#0369a1;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PAZARTESİ" data-s="11:00 - 11:50" data-t="7.09.2026" id="b-15">B-15
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-15</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">11:00 - 11:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0fdf4;color:#15803d;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="SALI" data-s="11:00 - 11:50" data-t="8.09.2026" id="b-2">B-2
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-2</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">11:00 - 11:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0fdf4;color:#15803d;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="SALI" data-s="11:00 - 11:50" data-t="8.09.2026" id="a-17">A-17
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-17</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">11:00 - 11:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="SALI" data-s="11:00 - 11:50" data-t="8.09.2026" id="e-16">E-16
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">E-16</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">11:00 - 11:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fff7ed;color:#c2410c;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="ÇARŞAMBA" data-s="11:00 - 11:50" data-t="9.09.2026" id="b-18">B-18
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-18</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">11:00 - 11:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="ÇARŞAMBA" data-s="11:00 - 11:50" data-t="9.09.2026" id="d-13">D-13
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-13</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">11:00 - 11:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fff7ed;color:#c2410c;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="ÇARŞAMBA" data-s="11:00 - 11:50" data-t="9.09.2026" id="e-5">E-5
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">E-5</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">11:00 - 11:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="ÇARŞAMBA" data-s="11:00 - 11:50" data-t="9.09.2026" id="e-3">E-3
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">E-3</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">11:00 - 11:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fefce8;color:#a16207;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PERŞEMBE" data-s="11:00 - 11:50" data-t="10.09.2026" id="b-10">B-10
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-10</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">11:00 - 11:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="PERŞEMBE" data-s="11:00 - 11:50" data-t="10.09.2026" id="e-2">E-2
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">E-2</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">11:00 - 11:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fefce8;color:#a16207;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PERŞEMBE" data-s="11:00 - 11:50" data-t="10.09.2026" id="b-20">B-20
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-20</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">11:00 - 11:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="PERŞEMBE" data-s="11:00 - 11:50" data-t="10.09.2026" id="d-24">D-24
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-24</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">11:00 - 11:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f8fafc;color:#334155;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="CUMA" data-s="11:00 - 11:50" data-t="11.09.2026" id="b-5">B-5
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-5</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">11.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">CUMA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">11:00 - 11:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f8fafc;color:#334155;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="CUMA" data-s="11:00 - 11:50" data-t="11.09.2026" id="a-20">A-20
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-20</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">11.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">CUMA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">11:00 - 11:50</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+</tr>
+<!-- 13:30 - 14:20 -->
+<tr>
+<td colspan="2" style="padding:10px 4px;border:1px solid #333;background:#0f172a;color:#38bdf8;font-weight:bold;font-size:13.5px;text-align:center;white-space:nowrap;">13:30 - 14:20</td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0f9ff;color:#0369a1;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PAZARTESİ" data-s="13:30 - 14:20" data-t="7.09.2026" id="a-4">A-4
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-4</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">13:30 - 14:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="PAZARTESİ" data-s="13:30 - 14:20" data-t="7.09.2026" id="b-12">B-12
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-12</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">13:30 - 14:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0f9ff;color:#0369a1;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PAZARTESİ" data-s="13:30 - 14:20" data-t="7.09.2026" id="e-13">E-13
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">E-13</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">13:30 - 14:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0f9ff;color:#0369a1;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PAZARTESİ" data-s="13:30 - 14:20" data-t="7.09.2026" id="e-13-2">E-13
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">E-13</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">13:30 - 14:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0fdf4;color:#15803d;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="SALI" data-s="13:30 - 14:20" data-t="8.09.2026" id="d-2">D-2
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-2</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">13:30 - 14:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="SALI" data-s="13:30 - 14:20" data-t="8.09.2026" id="a-12">A-12
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-12</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">13:30 - 14:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0fdf4;color:#15803d;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="SALI" data-s="13:30 - 14:20" data-t="8.09.2026" id="e-6">E-6
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">E-6</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">13:30 - 14:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fff7ed;color:#c2410c;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="ÇARŞAMBA" data-s="13:30 - 14:20" data-t="9.09.2026" id="b-14">B-14
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-14</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">13:30 - 14:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="ÇARŞAMBA" data-s="13:30 - 14:20" data-t="9.09.2026" id="b-4">B-4
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-4</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">13:30 - 14:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fff7ed;color:#c2410c;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="ÇARŞAMBA" data-s="13:30 - 14:20" data-t="9.09.2026" id="d-1">D-1
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-1</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">13:30 - 14:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="ÇARŞAMBA" data-s="13:30 - 14:20" data-t="9.09.2026" id="d-22">D-22
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-22</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">13:30 - 14:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fefce8;color:#a16207;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PERŞEMBE" data-s="13:30 - 14:20" data-t="10.09.2026" id="d-12">D-12
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-12</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">13:30 - 14:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="PERŞEMBE" data-s="13:30 - 14:20" data-t="10.09.2026" id="b-23">B-23
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-23</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">13:30 - 14:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fefce8;color:#a16207;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PERŞEMBE" data-s="13:30 - 14:20" data-t="10.09.2026" id="c-6">C-6
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">C-6</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">13:30 - 14:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="PERŞEMBE" data-s="13:30 - 14:20" data-t="10.09.2026" id="b-24">B-24
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-24</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">13:30 - 14:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f8fafc;color:#334155;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="CUMA" data-s="13:30 - 14:20" data-t="11.09.2026" id="g-1">G-1
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">G-1</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">11.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">CUMA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">13:30 - 14:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="CUMA" data-s="13:30 - 14:20" data-t="11.09.2026" id="r-2">R-2
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">R-2</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">11.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">CUMA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">13:30 - 14:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f8fafc;color:#334155;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="CUMA" data-s="13:30 - 14:20" data-t="11.09.2026" id="g-2">G-2
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">G-2</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">11.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">CUMA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">13:30 - 14:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+</tr>
+<!-- 14:30 - 15:20 -->
+<tr>
+<td colspan="2" style="padding:10px 4px;border:1px solid #333;background:#0f172a;color:#38bdf8;font-weight:bold;font-size:13.5px;text-align:center;white-space:nowrap;">14:30 - 15:20</td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0f9ff;color:#0369a1;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PAZARTESİ" data-s="14:30 - 15:20" data-t="7.09.2026" id="e-10">E-10
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">E-10</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="PAZARTESİ" data-s="14:30 - 15:20" data-t="7.09.2026" id="d-8">D-8
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-8</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0f9ff;color:#0369a1;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PAZARTESİ" data-s="14:30 - 15:20" data-t="7.09.2026" id="b-9">B-9
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-9</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0f9ff;color:#0369a1;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PAZARTESİ" data-s="14:30 - 15:20" data-t="7.09.2026" id="d-7">D-7
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-7</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0fdf4;color:#15803d;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="SALI" data-s="14:30 - 15:20" data-t="8.09.2026" id="c-10">C-10
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">C-10</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0fdf4;color:#15803d;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="SALI" data-s="14:30 - 15:20" data-t="8.09.2026" id="a-7">A-7
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-7</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="SALI" data-s="14:30 - 15:20" data-t="8.09.2026" id="e-15">E-15
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">E-15</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fff7ed;color:#c2410c;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="ÇARŞAMBA" data-s="14:30 - 15:20" data-t="9.09.2026" id="a-2">A-2
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-2</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="ÇARŞAMBA" data-s="14:30 - 15:20" data-t="9.09.2026" id="d-16">D-16
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-16</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fff7ed;color:#c2410c;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="ÇARŞAMBA" data-s="14:30 - 15:20" data-t="9.09.2026" id="a-16">A-16
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-16</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="ÇARŞAMBA" data-s="14:30 - 15:20" data-t="9.09.2026" id="a-19">A-19
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-19</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fefce8;color:#a16207;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PERŞEMBE" data-s="14:30 - 15:20" data-t="10.09.2026" id="d-3">D-3
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-3</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="PERŞEMBE" data-s="14:30 - 15:20" data-t="10.09.2026" id="b-6">B-6
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-6</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fefce8;color:#a16207;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PERŞEMBE" data-s="14:30 - 15:20" data-t="10.09.2026" id="b-17">B-17
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-17</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="PERŞEMBE" data-s="14:30 - 15:20" data-t="10.09.2026" id="d-5">D-5
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-5</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f8fafc;color:#334155;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="CUMA" data-s="14:30 - 15:20" data-t="11.09.2026" id="e-12">E-12
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">E-12</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">11.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">CUMA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="CUMA" data-s="14:30 - 15:20" data-t="11.09.2026" id="r-1">R-1
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">R-1</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">11.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">CUMA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f8fafc;color:#334155;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="CUMA" data-s="14:30 - 15:20" data-t="11.09.2026" id="b-7">B-7
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-7</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">11.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">CUMA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="CUMA" data-s="14:30 - 15:20" data-t="11.09.2026" id="c-1">C-1
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">C-1</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">11.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">CUMA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">14:30 - 15:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+</tr>
+<!-- 15:30 - 16:20 -->
+<tr>
+<td colspan="2" style="padding:10px 4px;border:1px solid #333;background:#0f172a;color:#38bdf8;font-weight:bold;font-size:13.5px;text-align:center;white-space:nowrap;">15:30 - 16:20</td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0f9ff;color:#0369a1;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PAZARTESİ" data-s="15:30 - 16:20" data-t="7.09.2026" id="a-9">A-9
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-9</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">15:30 - 16:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0f9ff;color:#0369a1;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PAZARTESİ" data-s="15:30 - 16:20" data-t="7.09.2026" id="a-14">A-14
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-14</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">15:30 - 16:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0f9ff;color:#0369a1;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PAZARTESİ" data-s="15:30 - 16:20" data-t="7.09.2026" id="d-9">D-9
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-9</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">7.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PAZARTESİ</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">15:30 - 16:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0fdf4;color:#15803d;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="SALI" data-s="15:30 - 16:20" data-t="8.09.2026" id="a-6">A-6
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-6</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">15:30 - 16:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="SALI" data-s="15:30 - 16:20" data-t="8.09.2026" id="a-19-2">A-19
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-19</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">15:30 - 16:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f0fdf4;color:#15803d;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="SALI" data-s="15:30 - 16:20" data-t="8.09.2026" id="b-19">B-19
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-19</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">15:30 - 16:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="SALI" data-s="15:30 - 16:20" data-t="8.09.2026" id="d-16-2">D-16
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-16</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">8.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">SALI</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">15:30 - 16:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fff7ed;color:#c2410c;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="ÇARŞAMBA" data-s="15:30 - 16:20" data-t="9.09.2026" id="d-4">D-4
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-4</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">15:30 - 16:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="ÇARŞAMBA" data-s="15:30 - 16:20" data-t="9.09.2026" id="b-21">B-21
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">B-21</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">15:30 - 16:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fff7ed;color:#c2410c;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="ÇARŞAMBA" data-s="15:30 - 16:20" data-t="9.09.2026" id="e-7">E-7
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">E-7</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">15:30 - 16:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="ÇARŞAMBA" data-s="15:30 - 16:20" data-t="9.09.2026" id="d-21">D-21
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-21</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">9.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">ÇARŞAMBA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">15:30 - 16:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fefce8;color:#a16207;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PERŞEMBE" data-s="15:30 - 16:20" data-t="10.09.2026" id="d-17">D-17
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-17</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">15:30 - 16:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="PERŞEMBE" data-s="15:30 - 16:20" data-t="10.09.2026" id="c-13">C-13
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">C-13</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">15:30 - 16:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#fefce8;color:#a16207;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="PERŞEMBE" data-s="15:30 - 16:20" data-t="10.09.2026" id="d-18">D-18
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">D-18</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">15:30 - 16:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="PERŞEMBE" data-s="15:30 - 16:20" data-t="10.09.2026" id="c-5">C-5
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">C-5</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">10.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">PERŞEMBE</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">15:30 - 16:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f8fafc;color:#334155;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="CUMA" data-s="15:30 - 16:20" data-t="11.09.2026" id="a-13">A-13
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-13</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">11.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">CUMA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">15:30 - 16:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span> | <span data-g="CUMA" data-s="15:30 - 16:20" data-t="11.09.2026" id="a-3">A-3
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">A-3</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">11.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">CUMA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">15:30 - 16:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+<td style="padding:10px 4px;border:1px solid #333;background:#f8fafc;color:#334155;font-weight:bold;text-align:center;white-space:nowrap;"><span data-g="CUMA" data-s="15:30 - 16:20" data-t="11.09.2026" id="e-9">E-9
+<span class="sabit-bilgi-karti">
+<span class="kart-icerik">
+<span class="kart-ust-bar">
+<span class="kart-rozet">✅ SEÇİLEN KOĞUŞ</span>
+<span class="kart-kogus-baslik">E-9</span>
+<a class="kart-kapat-btn" href="#kapat" title="Kapat">✕</a>
+</span>
+<span class="kart-grid">
+<span class="kart-kutu">
+<span class="kutu-lbl">📅 GÖRÜŞ TARİHİ</span>
+<span class="kutu-val">11.09.2026</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">📆 GÜN</span>
+<span class="kutu-val">CUMA</span>
+</span>
+<span class="kart-kutu">
+<span class="kutu-lbl">⏰ GÖRÜŞ SAATİ</span>
+<span class="kutu-val saat-vurgu">15:30 - 16:20</span>
+</span>
+</span>
+<span class="kart-alt-bilgi">👇 Sayfa tablodaki yerine kaydırıldı. Kapatmak için [✕] butonuna basabilirsiniz.</span>
+</span>
+</span>
+</span></td>
+</tr>
+<tr style="background-color:#991b1b;color:#fff;">
+<td colspan="13" style="padding:12px;font-size:15px;font-weight:bold;border:1px solid #333;background:#991b1b;color:#fff;text-align:center;letter-spacing:0.5px;">ZİYARETÇİLERİN DİKKAT ETMESİ GEREKEN KURALLAR</td>
+</tr>
+<tr style="background-color:#0f172a;color:#fff;">
+<td colspan="13" style="padding:16px 20px;font-size:13px;font-weight:bold;text-align:center;border:1px solid #333;background:#0f172a;color:#fff;line-height:1.8;">
+                        • ZİYARETÇİLERİN ZİYARET SAATİNDEN 1 (BİR) SAAT ÖNCE ZİYARETÇİ KABUL BİRİMİNDE OLMALARI GEREKMEKTEDİR.<br/>
+                        • BELİRTİLEN ZİYARET SAATİ SONRASI GELEN ZİYARETÇİLER KESİNLİKLE ZİYARETE ALINMAYACAKTIR.<br/>
+                        • AYIN PAZARTESİ İLE BAŞLAYAN İLK TAM HAFTASI AÇIK GÖRÜŞ, DİĞER HAFTALAR KAPALI GÖRÜŞ YAPTIRILACAKTIR.<br/>
+                        • LİSTEDE "(ÇOCUK)" OLARAK BELİRTİLEN E BLOK 1. KOĞUŞ AYIN 4 HAFTASI AÇIK GÖRÜŞ YAPACAKTIR. ÇOCUK KOĞUŞLARININ GÖRÜŞ SÜRELERİ BAŞLANGIÇ SAATİNDEN İTİBAREN 90 DAKİKADIR. DİĞER KOĞUŞLARIN AÇIK VE KAPALI GÖRÜŞ SÜRELERİ 50 DAKİKADIR.<br/>
+                        • AĞIRLAŞTIRILMIŞ MÜEBBET HÜKÜMLÜLERİNE AY İÇERİSİNDE 1 AÇIK, 1 KAPALI OLMAK ÜZERE 2 GÖRÜŞ HAKKI TANINMIŞTIR.<br/>
+                        • ZİYARET PROGRAMI 01.01.2027 TARİHİNE KADAR GEÇERLİDİR, O TARİHTE YENİDEN DÜZENLENECEKTİR.<br/>
+                        • HÜKÜMLÜ VE TUTUKLULARLA GÖRÜŞ YAPACAK ZİYARETÇİ SAYISI 5 KİŞİ İLE SINIRLIDIR. (0-7 YAŞ KENDİ ÇOCUĞU, KARDEŞİ, TORUNU SAYIYA DAHİL DEĞİLDİR.)
+                    </td>
+</tr>
+</tbody>
+</table>
+    </div>
+
+</div>
