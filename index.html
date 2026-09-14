@@ -196,13 +196,20 @@
             margin-top: 14px;
             padding-top: 12px;
             border-top: 1px solid rgba(255, 255, 255, 0.12);
-            font-size: 12px;
+            font-size: 12.5px;
             color: #cbd5e1;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
             gap: 6px;
+            width: 100%;
+        }
+
+        .ddk-kural-notu span {
+            text-align: center;
+            display: inline-block;
         }
 
         /* --- 2. MERKEZİ İNPUTLU ARAMA PANELİ --- */
@@ -704,46 +711,62 @@
         .de-sonraki { background: #e2e8f0; color: #475569; }
         .de-gecti { background: #fee2e2; color: #b91c1c; font-weight: 800; text-decoration: none !important; position: relative; z-index: 1; }
 
-        /* PROFESYONEL BİLGİLENDİRME VE KURALLAR */
+        /* KURUMSAL DUYURU VE ZİYARET KURALLARI */
         .bilgilendirme-kutusu {
-            background: #fffbeb;
-            border: 1px solid #fde68a;
+            background: #fff8f8;
+            border: 1.5px solid #fecaca;
             border-radius: var(--radius-md);
-            padding: 16px 18px;
+            padding: 18px 20px;
             margin-bottom: 20px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.05);
         }
 
         .bk-baslik {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-            font-size: 13.5px;
-            font-weight: 800;
-            color: #92400e;
-            margin-bottom: 10px;
-            padding-bottom: 6px;
-            border-bottom: 1px solid #fef3c7;
+            font-size: 15px;
+            font-weight: 900;
+            color: #991b1b;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #fee2e2;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
 
         .bk-liste {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
         .bk-liste li {
             font-size: 12.5px;
             font-weight: 600;
-            color: #78350f;
-            line-height: 1.45;
+            color: #7f1d1d;
+            line-height: 1.5;
             display: flex;
             align-items: flex-start;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .bk-liste li strong { color: #451a03; }
-        .bk-ikon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+        .bk-liste li strong { color: #450a0a; }
+        .bk-ikon { 
+            font-size: 14px; 
+            flex-shrink: 0; 
+            margin-top: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: #fee2e2;
+            border-radius: 50%;
+        }
 
         .kart-alt-aksiyon {
             display: flex;
@@ -847,6 +870,153 @@
                 width: 100%;
             }
         }
+
+        /* ÖNERİ LİSTESİ BOŞ UYARISI */
+        .oneri-bos {
+            padding: 12px 16px;
+            font-size: 13px;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            background: #f8fafc;
+        }
+
+        /* HATA / BULUNAMADI MODAL POPUP */
+        .hata-modal-arkaplan {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            padding: 16px;
+            animation: modalFadeIn 0.2s ease-out;
+        }
+
+        .hata-modal-kutu {
+            background: #ffffff;
+            width: 100%;
+            max-width: 410px;
+            border-radius: var(--radius-xl);
+            padding: 26px 22px 22px;
+            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+            text-align: center;
+            position: relative;
+            animation: modalPopIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid #fee2e2;
+        }
+
+        .hata-modal-kapat {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: #f1f5f9;
+            color: #64748b;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s;
+        }
+
+        .hata-modal-kapat:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+
+        .hata-modal-ikon-alani {
+            width: 62px;
+            height: 62px;
+            background: #fee2e2;
+            border: 4px solid #fef2f2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 14px;
+        }
+
+        .hata-modal-baslik {
+            font-size: 18.5px;
+            font-weight: 800;
+            color: #991b1b;
+            margin-bottom: 8px;
+        }
+
+        .hata-modal-metin {
+            font-size: 13.5px;
+            color: #475569;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .hata-modal-metin strong {
+            color: #0f172a;
+            word-break: break-all;
+        }
+
+        .hata-modal-ipucu {
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: var(--radius-md);
+            padding: 10px 12px;
+            font-size: 12px;
+            color: #64748b;
+            text-align: left;
+            margin-bottom: 18px;
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            line-height: 1.45;
+        }
+
+        .hata-modal-ipucu strong {
+            color: #0284c7;
+        }
+
+        .hata-modal-btn {
+            width: 100%;
+            padding: 12px 18px;
+            background: #0284c7;
+            color: #ffffff;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+        }
+
+        .hata-modal-btn:hover {
+            background: #0369a1;
+            transform: translateY(-1px);
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes modalPopIn {
+            from { opacity: 0; transform: scale(0.92); }
+            to { opacity: 1; transform: scale(1); }
+        }
     </style>
 </head>
 <body>
@@ -874,7 +1044,7 @@
 
         <div class="ddk-kural-notu">
             <span>⚖️ <strong>Bakanlık Kuralı:</strong> Ayın Pazartesi ile başlayan ilk tam haftası Açık Görüş, diğer haftalar Kapalı Görüş uygulanır.</span>
-            <span id="ddkSonrakiHaftaNotu">Sıradaki: 21 - 25 Eylül Kapalı Görüş</span>
+            <span id="ddkSonrakiHaftaNotu">Bilgi: Açık görüşler ayın ilk tam haftasında uygulanır.</span>
         </div>
     </header>
 
@@ -956,32 +1126,35 @@
                         </div>
                     </div>
 
-                    <!-- Bilgilendirme ve Kurallar -->
+                    <!-- Bilgilendirme ve Kurallar (Resmi Kurum Duyurusu) -->
                     <div class="bilgilendirme-kutusu">
                         <div class="bk-baslik">
-                            <span>⚠️</span>
-                            <span>Ziyaret Öncesi Önemli Bilgilendirme</span>
+                            <span>📢 DUYURU</span>
                         </div>
                         <ul class="bk-liste">
                             <li>
+                                <span class="bk-ikon">🕒</span>
+                                <span><strong>1-</strong> Aylık Açık ve Kapalı Ziyaretler Belirtilen Gün ve Saatlerde Yaptırılacak olup; <strong>Mevzuata Aykırı Olması ve Güvenlik Nedeniyle Sonradan Ziyaret Olmayacaktır.</strong></span>
+                            </li>
+                            <li>
                                 <span class="bk-ikon">⏱️</span>
-                                <span>Ziyaret saatinden <strong>en az 1 saat önce</strong> Ziyaretçi Kabul Biriminde kayıt işlemlerini tamamlayınız.</span>
+                                <span><strong>2-</strong> Ziyaretçilerin Ön Kayıt İşlemleri İçin; Belirtilen Ziyaret Başlama Saatinden <strong>En Az 60 Dakika Önce</strong> Ziyaret Kabul Alanında Bulunmaları Gerekmektedir.</span>
                             </li>
                             <li>
                                 <span class="bk-ikon">🚫</span>
-                                <span>Belirtilen <strong>ziyaret saati geçtikten sonra gelen ziyaretçiler kesinlikle içeri alınamaz</strong>.</span>
+                                <span><strong>3-</strong> Ziyaret Gün ve Saatini Kaçıran Tutuklu ve Hükümlü Yakınları <strong>Ziyaret Hakkını Kaybetmiş Sayılır ve Görüş Hakkından Faydalanamaz.</strong></span>
                             </li>
                             <li>
                                 <span class="bk-ikon">🪪</span>
-                                <span>Fotoğraflı <strong>T.C. Kimlik Kartı / Nüfus Cüzdanı aslı</strong> zorunludur.</span>
+                                <span><strong>4-</strong> Ziyaretçilerin yanlarında fotoğraflı <strong>T.C. Kimlik Kartı / Nüfus Cüzdanı aslı</strong> bulundurmaları zorunludur.</span>
                             </li>
                             <li>
                                 <span class="bk-ikon">👥</span>
-                                <span>Ziyaretçi sayısı en fazla <strong>5 kişi</strong> ile sınırlıdır (0-7 yaş çocuklar dahil değildir).</span>
+                                <span><strong>5-</strong> Ziyaretçi sayısı en fazla <strong>5 kişi</strong> ile sınırlıdır (0-7 yaş çocuklar dahil değildir).</span>
                             </li>
                             <li>
                                 <span class="bk-ikon">⏳</span>
-                                <span id="kartSureNotu">Görüş süresi <strong>50 dakikadır</strong> (Çocuk koğuşu için <strong>90 dakikadır</strong>).</span>
+                                <span id="kartSureNotu"><strong>6-</strong> Görüş süresi <strong>50 dakikadır</strong> (Çocuk koğuşu için <strong>90 dakikadır</strong>).</span>
                             </li>
                         </ul>
                     </div>
@@ -998,6 +1171,21 @@
         </div>
 
     </section>
+
+    <!-- HATA / BULUNAMADI ÖZEL MODAL POPUP -->
+    <div id="hataModal" class="hata-modal-arkaplan" style="display: none;" onclick="hataModalDisTikla(event)">
+        <div class="hata-modal-kutu" onclick="event.stopPropagation()">
+            <button type="button" class="hata-modal-kapat" onclick="hataModalKapat()" title="Kapat">✕</button>
+            <div class="hata-modal-ikon-alani">⚠️</div>
+            <h3 class="hata-modal-baslik">Koğuş Bulunamadı</h3>
+            <p id="hataModalMetin" class="hata-modal-metin">Girdiğiniz koğuş bilgisine ait aktif ziyaret kaydı bulunamadı.</p>
+            <div class="hata-modal-ipucu">
+                <span>💡</span>
+                <span><strong>Arama İpucu:</strong> Koğuş numarasını kontrol ediniz. (Örnek: <strong>A-5</strong>, <strong>B-12</strong>, <strong>C-4</strong>, <strong>E-1</strong> veya <strong>Çocuk</strong>)</span>
+            </div>
+            <button type="button" class="hata-modal-btn" onclick="hataModalKapat()">Tekrar Dene</button>
+        </div>
+    </div>
 
 </div>
 
@@ -1216,9 +1404,9 @@
         kartSaat.textContent = seciliZiyaret.saa;
 
         if (item.is_child) {
-            kartSureNotu.innerHTML = 'Çocuk koğuşları için açık görüş süresi <strong>90 dakikadır</strong> (Ayın 4 haftası açık görüş).';
+            kartSureNotu.innerHTML = '<strong>6-</strong> Çocuk koğuşları için açık görüş süresi <strong>90 dakikadır</strong> (Ayın 4 haftası açık görüş).';
         } else {
-            kartSureNotu.innerHTML = 'Görüş süresi <strong>50 dakikadır</strong>. Belirtilen saatten sonra gelenler içeri alınamaz.';
+            kartSureNotu.innerHTML = '<strong>6-</strong> Görüş süresi <strong>50 dakikadır</strong> (Çocuk koğuşu için <strong>90 dakikadır</strong>).';
         }
 
         // Tüm Ziyaretlerin Listesini Oluştur (Eski haftalar elendi, sadece güncel hafta ve gelecek haftalar)
@@ -1308,6 +1496,37 @@
         });
     }
 
+    const hataModal = document.getElementById('hataModal');
+    const hataModalMetin = document.getElementById('hataModalMetin');
+
+    function hataModalGoster(arananMetin) {
+        oneriMenusu.style.display = 'none';
+        kartGizle();
+        if (hataModal && hataModalMetin) {
+            const temizMetin = arananMetin ? arananMetin.replace(/</g, '&lt;').replace(/>/g, '&gt;') : '';
+            hataModalMetin.innerHTML = temizMetin 
+                ? `Girdiğiniz "<strong>${temizMetin}</strong>" bilgisine ait aktif ziyaret koğuş kaydı bulunamadı.`
+                : 'Lütfen aramak istediğiniz koğuş numarasını yazınız.';
+            hataModal.style.display = 'flex';
+        }
+    }
+
+    function hataModalKapat() {
+        if (hataModal) {
+            hataModal.style.display = 'none';
+        }
+        if (kogusInput) {
+            kogusInput.focus();
+            kogusInput.select();
+        }
+    }
+
+    function hataModalDisTikla(e) {
+        if (e.target === hataModal) {
+            hataModalKapat();
+        }
+    }
+
     function kartGizle() {
         sonucKartiAlani.style.display = 'none';
     }
@@ -1317,6 +1536,7 @@
         temizleBtn.style.display = 'none';
         oneriMenusu.style.display = 'none';
         kartGizle();
+        if (hataModal) hataModal.style.display = 'none';
         kogusInput.focus();
     }
 
@@ -1349,7 +1569,13 @@
         }).slice(0, 8);
 
         if (eslesenler.length === 0) {
-            oneriMenusu.style.display = 'none';
+            oneriMenusu.innerHTML = `
+                <div class="oneri-bos">
+                    <span>⚠️</span>
+                    <span>Böyle bir koğuş bulunamadı (Örn: A-5, B-12, Çocuk)</span>
+                </div>
+            `;
+            oneriMenusu.style.display = 'block';
             return;
         }
 
@@ -1375,7 +1601,10 @@
         if (e.key === 'Enter') {
             e.preventDefault();
             const val = this.value.trim();
-            if (!val) return;
+            if (!val) {
+                hataModalGoster('');
+                return;
+            }
 
             const aramaNorm = trNormalize(val);
             let bulunan = KOGUSLAR.find(k => trNormalize(k.name) === aramaNorm || trNormalize(k.id) === aramaNorm);
@@ -1386,10 +1615,14 @@
             if (bulunan) {
                 kartAc(bulunan.id);
             } else {
-                alert("Girdiğiniz koğuş bulunamadı. Lütfen kontrol ediniz.");
+                hataModalGoster(val);
             }
         } else if (e.key === 'Escape') {
-            oneriMenusu.style.display = 'none';
+            if (hataModal && hataModal.style.display === 'flex') {
+                hataModalKapat();
+            } else {
+                oneriMenusu.style.display = 'none';
+            }
         }
     });
 
@@ -1400,15 +1633,18 @@
     sorgulaBtn.addEventListener('click', function() {
         const val = kogusInput.value.trim();
         if (!val) {
-            kogusInput.focus();
+            hataModalGoster('');
             return;
         }
         const aramaNorm = trNormalize(val);
-        const bulunan = KOGUSLAR.find(k => trNormalize(k.name).includes(aramaNorm) || trNormalize(k.id).includes(aramaNorm));
+        let bulunan = KOGUSLAR.find(k => trNormalize(k.name) === aramaNorm || trNormalize(k.id) === aramaNorm);
+        if (!bulunan) {
+            bulunan = KOGUSLAR.find(k => trNormalize(k.name).includes(aramaNorm) || trNormalize(k.id).includes(aramaNorm));
+        }
         if (bulunan) {
             kartAc(bulunan.id);
         } else {
-            alert("Girdiğiniz koğuş bulunamadı.");
+            hataModalGoster(val);
         }
     });
 
