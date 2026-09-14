@@ -662,6 +662,37 @@
             font-weight: 800;
         }
 
+        .tga-madde.gecmis-madde {
+            background: #f8fafc !important;
+            border-color: #e2e8f0 !important;
+            opacity: 0.6;
+            position: relative;
+        }
+
+        .tga-madde.gecmis-madde .tga-sol,
+        .tga-madde.gecmis-madde .tga-sag .tga-saat {
+            text-decoration: line-through;
+            color: #94a3b8 !important;
+        }
+
+        .tga-madde.gecmis-madde .tga-rozet {
+            text-decoration: line-through;
+            filter: grayscale(1);
+            opacity: 0.65;
+        }
+
+        .tga-madde.gecmis-madde::after {
+            content: '';
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            top: 50%;
+            height: 1.5px;
+            background: #ef4444;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
         .tga-durum-etiket {
             font-size: 11px;
             padding: 2px 8px;
@@ -671,7 +702,7 @@
 
         .de-aktif { background: #fef08a; color: #854d0e; }
         .de-sonraki { background: #e2e8f0; color: #475569; }
-        .de-gecti { background: #fee2e2; color: #991b1b; text-decoration: line-through; }
+        .de-gecti { background: #fee2e2; color: #b91c1c; font-weight: 800; text-decoration: none !important; position: relative; z-index: 1; }
 
         /* PROFESYONEL BİLGİLENDİRME VE KURALLAR */
         .bilgilendirme-kutusu {
@@ -823,27 +854,27 @@
 <div class="ana-kapsayici">
 
     <!-- 1. DİNAMİK HAFTALIK ZİYARET DURUM KARTI (EN BAŞTA) -->
-    <header id="dinamikDurumKarti" class="dinamik-durum-karti ddk-acik">
+    <header id="dinamikDurumKarti" class="dinamik-durum-karti ddk-kapali">
         <div class="ddk-ust">
             <div class="ddk-canli-rozet">
                 <span class="ddk-nokta"></span>
-                <span id="ddkRozetMetin">CANLI DURUM: AÇIK GÖRÜŞ HAFTASI</span>
+                <span id="ddkRozetMetin">CANLI DURUM: KAPALI GÖRÜŞ HAFTASI</span>
             </div>
-            <span id="bugunTarihRozet" class="ddk-tarih-bugun">📅 11 Eylül 2026 Cuma</span>
+            <span id="bugunTarihRozet" class="ddk-tarih-bugun">📅 14 Eylül 2026 Pazartesi</span>
         </div>
 
         <div class="ddk-ana-icerik">
-            <div id="ddkIkonKutusu" class="ddk-ikon-kutusu">🟢</div>
+            <div id="ddkIkonKutusu" class="ddk-ikon-kutusu">🔵</div>
             <div class="ddk-metinler">
                 <div class="ddk-etiket">BU HAFTAKİ ZİYARET TÜRÜ:</div>
-                <h1 id="ddkBuyukBaslik" class="ddk-buyuk-baslik">BU HAFTA: AÇIK GÖRÜŞ HAFTASI</h1>
-                <p id="ddkAralikAciklama" class="ddk-aralik-aciklama">07 - 11 Eylül 2026 &bull; Kurumda bu hafta fiziki engelsiz Açık Görüş uygulanmaktadır.</p>
+                <h1 id="ddkBuyukBaslik" class="ddk-buyuk-baslik">BU HAFTA: KAPALI GÖRÜŞ HAFTASI</h1>
+                <p id="ddkAralikAciklama" class="ddk-aralik-aciklama">14 - 18 Eylül 2026 &bull; Kurumda bu hafta ziyaretler cam bölme ve telefonla Kapalı Görüş olarak uygulanmaktadır.</p>
             </div>
         </div>
 
         <div class="ddk-kural-notu">
             <span>⚖️ <strong>Bakanlık Kuralı:</strong> Ayın Pazartesi ile başlayan ilk tam haftası Açık Görüş, diğer haftalar Kapalı Görüş uygulanır.</span>
-            <span id="ddkSonrakiHaftaNotu">Sıradaki: 14 - 18 Eylül Kapalı Görüş</span>
+            <span id="ddkSonrakiHaftaNotu">Sıradaki: 21 - 25 Eylül Kapalı Görüş</span>
         </div>
     </header>
 
@@ -851,7 +882,7 @@
     <section class="arama-karti">
         <div class="arama-kutusu-etiket">
             <span>🔎 Koğuş Arama &amp; Ziyaret Türü Sorgulama:</span>
-            <span class="arama-ipucu">Yazınca en yakın tarih ve açık/kapalı türü açılır</span>
+            <span class="arama-ipucu">Yazınca şu andaki görüş tarihi ve türü açılır</span>
         </div>
 
         <div class="arama-input-sarici">
@@ -890,9 +921,9 @@
                 <!-- Kart Gövdesi -->
                 <div class="kart-govde">
                     
-                    <!-- EN YAKIN GÖRÜŞ TÜRÜ VURGU BANNERI -->
+                    <!-- ŞU ANDAKİ GÖRÜŞ VURGU BANNERI -->
                     <div id="vurguKutusu" class="gorus-turu-vurgu-kutusu">
-                        <div class="gtv-etiket">🎯 EN YAKIN AKTİF ZİYARET</div>
+                        <div class="gtv-etiket">🎯 ŞU ANDAKİ GÖRÜŞ</div>
                         <div id="gtvTurBaslik" class="gtv-tur-baslik">—</div>
                         <div id="gtvKogusAdi" class="gtv-kogus-adi">—</div>
                         <div id="gtvDurumMesaji" class="gtv-durum-mesaji">—</div>
@@ -977,39 +1008,67 @@
     // Referans Tarih Fonksiyonu (Dinamik Takvim Kontrolü)
     function getReferansTarih() {
         const now = new Date();
-        // Eğer cihaz tarihi Eylül/Ekim 2026 ise doğrudan cihaz tarihini kullan
+        // Eğer cihaz tarihi 2026 yılı Eylül veya Ekim ise doğrudan cihaz tarihini kullan
         if (now.getFullYear() === 2026 && (now.getMonth() === 8 || now.getMonth() === 9)) {
             return now;
         }
-        // Varsayılan program tarihi (11 Eylül 2026)
-        return new Date(2026, 8, 11);
+        // Değilse varsayılan olarak program tarihi (14 Eylül 2026)
+        return new Date(2026, 8, 14, 9, 0, 0);
     }
 
     const referansTarih = getReferansTarih();
 
     // =========================================================
     // DİNAMİK HAFTALIK ZİYARET TÜRÜ HESAPLAYICI (STATİK DEĞİL DİNAMİK)
+    // 11'i bittiği gün 12'sinden (Cumartesi) itibaren yeni haftaya geçiş
     // =========================================================
-    function guncelleDinamikHaftaDurumu(d) {
-        const gunIndex = d.getDay(); // 0 = Pazar, 1 = Pazartesi ...
-        const diffPazartesi = (gunIndex === 0 ? -6 : 1) - gunIndex;
+    function getAktifHaftaBilgisi(d) {
+        const gunIndex = d.getDay(); // 0 = Pazar, 1 = Pazartesi, ..., 6 = Cumartesi
         
-        const pazartesi = new Date(d);
-        pazartesi.setDate(d.getDate() + diffPazartesi);
-        pazartesi.setHours(0, 0, 0, 0);
+        const pzt = new Date(d);
+        pzt.setHours(0, 0, 0, 0);
 
-        const cuma = new Date(pazartesi);
-        cuma.setDate(pazartesi.getDate() + 4);
+        // Cuma (11) bittiğinde 12'sinden (Cumartesi) itibaren doğrudan yeni haftaya geçilir:
+        if (gunIndex === 6) {
+            // Cumartesi -> 2 gün sonraki Pazartesi yeni haftadır
+            pzt.setDate(d.getDate() + 2);
+        } else if (gunIndex === 0) {
+            // Pazar -> 1 gün sonraki Pazartesi yeni haftadır
+            pzt.setDate(d.getDate() + 1);
+        } else {
+            // Pazartesi(1) - Cuma(5) -> bu haftanın Pazartesi'si
+            pzt.setDate(d.getDate() - (gunIndex - 1));
+        }
+
+        const cuma = new Date(pzt);
+        cuma.setDate(pzt.getDate() + 4);
+        cuma.setHours(23, 59, 59, 999);
 
         // Bakanlık Kuralı: Ayın Pazartesi ile başlayan ilk tam haftası Açık Görüş!
-        // Ayın ilk Pazartesi'si her zaman 1 ile 7 arasındaki günlere denk gelir!
-        const isAcikHafta = (pazartesi.getDate() <= 7);
+        // Ayın ilk Pazartesi'si her zaman 1 ile 7 arasındaki günlere denk gelir (Örn: 7-11 Eylül Açık Görüş).
+        // 14 Eylül, 21 Eylül, 28 Eylül ise Kapalı Görüş haftalarıdır.
+        const isAcikHafta = (pzt.getDate() <= 7);
+
+        return {
+            pazartesi: pzt,
+            cuma: cuma,
+            isAcikHafta: isAcikHafta
+        };
+    }
+
+    function guncelleDinamikHaftaDurumu(d) {
+        const hafta = getAktifHaftaBilgisi(d);
+        const pz = hafta.pazartesi;
+        const cm = hafta.cuma;
+        const isAcikHafta = hafta.isAcikHafta;
 
         const ayAdlari = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
-        const pzStr = pazartesi.getDate().toString().padStart(2, '0');
-        const cmStr = cuma.getDate().toString().padStart(2, '0');
-        const ayStr = ayAdlari[pazartesi.getMonth()];
-        const yilStr = pazartesi.getFullYear();
+        const gunAdlari = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+
+        const pzStr = pz.getDate().toString().padStart(2, '0');
+        const cmStr = cm.getDate().toString().padStart(2, '0');
+        const ayStr = ayAdlari[pz.getMonth()];
+        const yilStr = pz.getFullYear();
 
         const aralikMetni = `${pzStr} - ${cmStr} ${ayStr} ${yilStr}`;
 
@@ -1022,7 +1081,6 @@
         const bugunTarihRozet = document.getElementById('bugunTarihRozet');
 
         // Bugün tarihini yaz
-        const gunAdlari = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
         bugunTarihRozet.textContent = `📅 ${d.getDate()} ${ayAdlari[d.getMonth()]} ${d.getFullYear()} ${gunAdlari[d.getDay()]}`;
 
         if (isAcikHafta) {
@@ -1082,11 +1140,26 @@
             .replace(/[\s\-_]/g, '');
     }
 
-    // Tarih Ayrıştırıcı
+    // Tarih Ayrıştırıcı (Günün 23:59:59 saati)
     function parseDate(isoStr) {
         if (!isoStr) return new Date();
         const [y, m, d] = isoStr.split('-').map(Number);
         return new Date(y, m - 1, d, 23, 59, 59);
+    }
+
+    // Ziyaretin tam saat bitiş zamanı (Timestamp)
+    function getZiyaretBitisZamani(v) {
+        if (!v || !v.iso_date) return 0;
+        const [y, m, d] = v.iso_date.split('-').map(Number);
+        let bitisSaat = 17, bitisDakika = 0;
+        if (v.saa && v.saa.includes('-')) {
+            const parts = v.saa.split('-');
+            const endPart = parts[1].trim(); // "09:50"
+            const [sh, sm] = endPart.split(':').map(Number);
+            if (!isNaN(sh)) bitisSaat = sh;
+            if (!isNaN(sm)) bitisDakika = sm;
+        }
+        return new Date(y, m - 1, d, bitisSaat, bitisDakika, 0).getTime();
     }
 
     // Koğuş Kartını Aç ve En Yakın Tarihi Göster
@@ -1094,12 +1167,26 @@
         const item = KOGUSLAR.find(k => k.id.toLowerCase() === kogusId.toLowerCase());
         if (!item || !item.visits || item.visits.length === 0) return;
 
-        // En yakın randevuyu bul:
-        const bugunZaman = referansTarih.getTime();
-        let seciliZiyaret = item.visits.find(v => parseDate(v.iso_date).getTime() >= bugunZaman);
+        const haftaBilgisi = getAktifHaftaBilgisi(referansTarih);
+        const aktifHaftaPztZaman = haftaBilgisi.pazartesi.getTime();
+        const simdiZaman = referansTarih.getTime();
 
+        // 1. KURAL: Hafta bitince yeni haftada eski haftanın verisini gösterme!
+        // Sadece aktif haftanın Pazartesi gününden itibaren olan ve gelecekteki ziyaretleri göster:
+        let gosterilecekZiyaretler = item.visits.filter(v => {
+            const vTarihObj = parseDate(v.iso_date);
+            return vTarihObj.getTime() >= aktifHaftaPztZaman;
+        });
+
+        // Eğer tüm randevular eski haftada kaldıysa en azından son randevuyu göster
+        if (gosterilecekZiyaretler.length === 0) {
+            gosterilecekZiyaretler = [item.visits[item.visits.length - 1]];
+        }
+
+        // En yakın randevuyu bul (Bitiş saati geçmemiş ilk randevu, hepsi geçmişse ilk gösterilen randevu):
+        let seciliZiyaret = gosterilecekZiyaretler.find(v => getZiyaretBitisZamani(v) >= simdiZaman);
         if (!seciliZiyaret) {
-            seciliZiyaret = item.visits[item.visits.length - 1];
+            seciliZiyaret = gosterilecekZiyaretler[0];
         }
 
         const isAcik = seciliZiyaret.tur_kodu === 'ACIK';
@@ -1134,26 +1221,31 @@
             kartSureNotu.innerHTML = 'Görüş süresi <strong>50 dakikadır</strong>. Belirtilen saatten sonra gelenler içeri alınamaz.';
         }
 
-        // Tüm Ziyaretlerin Listesini Oluştur
-        tumZiyaretlerListesi.innerHTML = item.visits.map(v => {
-            const vTarihObj = parseDate(v.iso_date);
-            const vIsAcik = v.tur_kodu === 'ACIK';
+        // Tüm Ziyaretlerin Listesini Oluştur (Eski haftalar elendi, sadece güncel hafta ve gelecek haftalar)
+        tumZiyaretlerListesi.innerHTML = gosterilecekZiyaretler.map(v => {
+            const vBitisZaman = getZiyaretBitisZamani(v);
+            const isGecti = vBitisZaman < simdiZaman;
             const isSecili = (v.iso_date === seciliZiyaret.iso_date && v.saa === seciliZiyaret.saa);
+            const vIsAcik = v.tur_kodu === 'ACIK';
             
             let durumHtml = '';
-            if (isSecili) {
-                durumHtml = '<span class="tga-durum-etiket de-aktif">🎯 En Yakın Aktif</span>';
-            } else if (vTarihObj.getTime() < bugunZaman) {
+            let ekMaddeClass = '';
+
+            if (isGecti) {
+                // 2. KURAL: Aynı hafta üzerinde bitmişse tüm satır boydan boya komple çizili!
+                ekMaddeClass = 'gecmis-madde';
                 durumHtml = '<span class="tga-durum-etiket de-gecti">Geçti</span>';
+            } else if (isSecili) {
+                ekMaddeClass = 'aktif-secili ' + (vIsAcik ? 'madde-acik' : 'madde-kapali');
+                durumHtml = '<span class="tga-durum-etiket de-aktif">🎯 Şu Andaki Görüş</span>';
             } else {
                 durumHtml = '<span class="tga-durum-etiket de-sonraki">Gelecek</span>';
             }
 
             const rozetClass = vIsAcik ? 'tr-acik' : 'tr-kapali';
-            const maddeClass = isSecili ? (vIsAcik ? 'aktif-secili madde-acik' : 'aktif-secili madde-kapali') : '';
 
             return `
-                <div class="tga-madde ${maddeClass}" onclick="ziyaretSec('${item.id}', '${v.iso_date}')">
+                <div class="tga-madde ${ekMaddeClass}" onclick="ziyaretSec('${item.id}', '${v.iso_date}')">
                     <div class="tga-sol">
                         <span class="tga-rozet ${rozetClass}">${v.tur}</span>
                         <span class="tga-tarih">${v.tar}</span>
