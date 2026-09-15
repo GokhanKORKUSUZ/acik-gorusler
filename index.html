@@ -702,14 +702,53 @@
 
         .tga-durum-etiket {
             font-size: 11px;
-            padding: 2px 8px;
+            padding: 3px 9px;
             border-radius: 12px;
             font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
         }
 
-        .de-aktif { background: #fef08a; color: #854d0e; }
-        .de-sonraki { background: #e2e8f0; color: #475569; }
-        .de-gecti { background: #fee2e2; color: #b91c1c; font-weight: 800; text-decoration: none !important; position: relative; z-index: 1; }
+        .de-canli { 
+            background: #dcfce7; 
+            color: #15803d; 
+            border: 1px solid #86efac; 
+            animation: pulseCanli 2s infinite; 
+        }
+        @keyframes pulseCanli {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        .de-aktif { 
+            background: #fef08a; 
+            color: #854d0e; 
+            border: 1px solid #fde047; 
+        }
+
+        .de-siradaki-gelecek { 
+            background: #dbeafe; 
+            color: #1d4ed8; 
+            border: 1px solid #bfdbfe; 
+            font-weight: 800; 
+        }
+
+        .de-sonraki { 
+            background: #f1f5f9; 
+            color: #64748b; 
+        }
+
+        .de-gecti { 
+            background: #fee2e2; 
+            color: #b91c1c; 
+            font-weight: 800; 
+            text-decoration: none !important; 
+            position: relative; 
+            z-index: 1; 
+        }
 
         /* KURUMSAL DUYURU VE ZİYARET KURALLARI */
         .bilgilendirme-kutusu {
@@ -1052,7 +1091,7 @@
     <section class="arama-karti">
         <div class="arama-kutusu-etiket">
             <span>🔎 Koğuş Arama &amp; Ziyaret Türü Sorgulama:</span>
-            <span class="arama-ipucu">Yazınca şu andaki görüş tarihi ve türü açılır</span>
+            <span class="arama-ipucu">Koğuş adını yazınca aktif ve sıradaki randevu takvimi açılır</span>
         </div>
 
         <div class="arama-input-sarici">
@@ -1093,7 +1132,7 @@
                     
                     <!-- ŞU ANDAKİ GÖRÜŞ VURGU BANNERI -->
                     <div id="vurguKutusu" class="gorus-turu-vurgu-kutusu">
-                        <div class="gtv-etiket">🎯 ŞU ANDAKİ GÖRÜŞ</div>
+                        <div class="gtv-etiket" id="gtvEtiket">🎯 GÖRÜŞ BİLGİSİ</div>
                         <div id="gtvTurBaslik" class="gtv-tur-baslik">—</div>
                         <div id="gtvKogusAdi" class="gtv-kogus-adi">—</div>
                         <div id="gtvDurumMesaji" class="gtv-durum-mesaji">—</div>
@@ -1232,6 +1271,11 @@
         cuma.setDate(pzt.getDate() + 4);
         cuma.setHours(23, 59, 59, 999);
 
+        // Haftanın sonu (Pazar gecesi 23:59:59)
+        const pazarSonu = new Date(pzt);
+        pazarSonu.setDate(pzt.getDate() + 6);
+        pazarSonu.setHours(23, 59, 59, 999);
+
         // Bakanlık Kuralı: Ayın Pazartesi ile başlayan ilk tam haftası Açık Görüş!
         // Ayın ilk Pazartesi'si her zaman 1 ile 7 arasındaki günlere denk gelir (Örn: 7-11 Eylül Açık Görüş).
         // 14 Eylül, 21 Eylül, 28 Eylül ise Kapalı Görüş haftalarıdır.
@@ -1240,6 +1284,7 @@
         return {
             pazartesi: pzt,
             cuma: cuma,
+            pazarSonu: pazarSonu,
             isAcikHafta: isAcikHafta
         };
     }
@@ -1335,6 +1380,21 @@
         return new Date(y, m - 1, d, 23, 59, 59);
     }
 
+    // Ziyaretin başlangıç saat zamanı (Timestamp)
+    function getZiyaretBaslangicZamani(v) {
+        if (!v || !v.iso_date) return 0;
+        const [y, m, d] = v.iso_date.split('-').map(Number);
+        let basSaat = 9, basDakika = 0;
+        if (v.saa && v.saa.includes('-')) {
+            const parts = v.saa.split('-');
+            const startPart = parts[0].trim();
+            const [sh, sm] = startPart.split(':').map(Number);
+            if (!isNaN(sh)) basSaat = sh;
+            if (!isNaN(sm)) basDakika = sm;
+        }
+        return new Date(y, m - 1, d, basSaat, basDakika, 0).getTime();
+    }
+
     // Ziyaretin tam saat bitiş zamanı (Timestamp)
     function getZiyaretBitisZamani(v) {
         if (!v || !v.iso_date) return 0;
@@ -1348,6 +1408,68 @@
             if (!isNaN(sm)) bitisDakika = sm;
         }
         return new Date(y, m - 1, d, bitisSaat, bitisDakika, 0).getTime();
+    }
+
+    // Üst Bilgi Kartının Detaylarını Doldur
+    function kartDetayiniGoster(item, v) {
+        const haftaBilgisi = getAktifHaftaBilgisi(referansTarih);
+        const simdiZaman = referansTarih.getTime();
+        const vBaslangicZaman = getZiyaretBaslangicZamani(v);
+        const vBitisZaman = getZiyaretBitisZamani(v);
+        const isGecti = vBitisZaman < simdiZaman;
+        const isSuAnda = (simdiZaman >= vBaslangicZaman && simdiZaman <= vBitisZaman);
+        const vTarihObj = parseDate(v.iso_date);
+        const isBuHaftada = (vTarihObj.getTime() >= haftaBilgisi.pazartesi.getTime() && vTarihObj.getTime() <= haftaBilgisi.pazarSonu.getTime());
+        const isAcik = v.tur_kodu === 'ACIK';
+
+        // Kart Teması (Açık Görüş: Yeşil / Kapalı Görüş: Mavi)
+        if (isAcik) {
+            merkeziKutu.className = 'merkezi-bilgi-karti kart-acik';
+            kartUstRozet.className = 'kart-rozet rozet-acik';
+            vurguKutusu.className = 'gorus-turu-vurgu-kutusu vurgu-acik';
+            gtvTurBaslik.innerHTML = '🟢 AÇIK GÖRÜŞ';
+            kartSaat.style.color = '#15803d';
+        } else {
+            merkeziKutu.className = 'merkezi-bilgi-karti kart-kapali';
+            kartUstRozet.className = 'kart-rozet rozet-kapali';
+            vurguKutusu.className = 'gorus-turu-vurgu-kutusu vurgu-kapali';
+            gtvTurBaslik.innerHTML = '🔵 KAPALI GÖRÜŞ';
+            kartSaat.style.color = '#1d4ed8';
+        }
+
+        const gtvEtiket = document.getElementById('gtvEtiket');
+
+        if (isSuAnda) {
+            if (gtvEtiket) gtvEtiket.textContent = '🟢 ŞU ANDA YAPILAN GÖRÜŞ';
+            kartUstMetin.textContent = isAcik ? '🟢 CANLI: ŞU ANDA AÇIK GÖRÜŞ YAPILMAKTADIR' : '🔵 CANLI: ŞU ANDA KAPALI GÖRÜŞ YAPILMAKTADIR';
+            gtvDurumMesaji.textContent = '⚡ Bu koğuşun ziyareti şu anda aktif olarak devam etmektedir.';
+        } else if (isGecti) {
+            if (gtvEtiket) gtvEtiket.textContent = '⌛ GEÇMİŞ GÖRÜŞ RANDEVUSU';
+            kartUstMetin.textContent = '⚠️ BU GÖRÜŞÜN ZAMANI GEÇMİŞTİR';
+            gtvDurumMesaji.textContent = 'Bu tarihteki randevu süresi tamamlanmıştır. Lütfen sıradaki gelecek görüşü inceleyiniz.';
+        } else if (isBuHaftada) {
+            if (gtvEtiket) gtvEtiket.textContent = '⏳ BU HAFTAKİ GÖRÜŞ RANDEVUSU';
+            kartUstMetin.textContent = isAcik ? '🟢 BU HAFTAKİ GÖRÜŞ: AÇIK GÖRÜŞTÜR' : '🔵 BU HAFTAKİ GÖRÜŞ: KAPALI GÖRÜŞTÜR';
+            gtvDurumMesaji.textContent = isAcik 
+                ? '✅ Bu haftaki ziyaret fiziki engelsiz Açık Görüş olarak yapılacaktır.' 
+                : 'ℹ️ Bu haftaki ziyaret cam ve telefon irtibatıyla Kapalı Görüş olarak yapılacaktır.';
+        } else {
+            // Gelecek haftaya ait görüş
+            if (gtvEtiket) gtvEtiket.textContent = '📅 GELECEK GÖRÜŞ (SIRADAKİ RANDEVU)';
+            kartUstMetin.textContent = isAcik ? '🟢 GELECEK GÖRÜŞ: AÇIK GÖRÜŞTÜR' : '🔵 GELECEK GÖRÜŞ: KAPALI GÖRÜŞTÜR';
+            gtvDurumMesaji.textContent = 'ℹ️ Bu koğuşun bu haftaki görüşü tamamlanmıştır. Yukarıdaki randevu sıradaki haftanın görüşüdür.';
+        }
+
+        gtvKogusAdi.textContent = item.name + ' (' + item.blok + ')';
+        kartTarih.textContent = v.tar;
+        kartGun.textContent = v.gun;
+        kartSaat.textContent = v.saa;
+
+        if (item.is_child) {
+            kartSureNotu.innerHTML = '<strong>6-</strong> Çocuk koğuşları için açık görüş süresi <strong>90 dakikadır</strong> (Ayın 4 haftası açık görüş).';
+        } else {
+            kartSureNotu.innerHTML = '<strong>6-</strong> Görüş süresi <strong>50 dakikadır</strong> (Çocuk koğuşu için <strong>90 dakikadır</strong>).';
+        }
     }
 
     // Koğuş Kartını Aç ve En Yakın Tarihi Göster
@@ -1377,55 +1499,37 @@
             seciliZiyaret = gosterilecekZiyaretler[0];
         }
 
-        const isAcik = seciliZiyaret.tur_kodu === 'ACIK';
+        // Üst kartı doldur
+        kartDetayiniGoster(item, seciliZiyaret);
 
-        // Kart Teması (Açık Görüş: Yeşil / Kapalı Görüş: Mavi)
-        if (isAcik) {
-            merkeziKutu.className = 'merkezi-bilgi-karti kart-acik';
-            kartUstRozet.className = 'kart-rozet rozet-acik';
-            kartUstMetin.textContent = '🟢 BU GÖRÜŞ: AÇIK GÖRÜŞTÜR';
-            vurguKutusu.className = 'gorus-turu-vurgu-kutusu vurgu-acik';
-            gtvTurBaslik.innerHTML = '🟢 AÇIK GÖRÜŞ';
-            gtvDurumMesaji.textContent = '✅ Bu tarihteki ziyaret fiziki engelsiz Açık Görüş olarak yapılacaktır.';
-            kartSaat.style.color = '#15803d';
-        } else {
-            merkeziKutu.className = 'merkezi-bilgi-karti kart-kapali';
-            kartUstRozet.className = 'kart-rozet rozet-kapali';
-            kartUstMetin.textContent = '🔵 BU GÖRÜŞ: KAPALI GÖRÜŞTÜR';
-            vurguKutusu.className = 'gorus-turu-vurgu-kutusu vurgu-kapali';
-            gtvTurBaslik.innerHTML = '🔵 KAPALI GÖRÜŞ';
-            gtvDurumMesaji.textContent = 'ℹ️ Bu tarihteki ziyaret cam ve telefon irtibatıyla Kapalı Görüş olarak yapılacaktır.';
-            kartSaat.style.color = '#1d4ed8';
-        }
-
-        gtvKogusAdi.textContent = item.name + ' (' + item.blok + ')';
-        kartTarih.textContent = seciliZiyaret.tar;
-        kartGun.textContent = seciliZiyaret.gun;
-        kartSaat.textContent = seciliZiyaret.saa;
-
-        if (item.is_child) {
-            kartSureNotu.innerHTML = '<strong>6-</strong> Çocuk koğuşları için açık görüş süresi <strong>90 dakikadır</strong> (Ayın 4 haftası açık görüş).';
-        } else {
-            kartSureNotu.innerHTML = '<strong>6-</strong> Görüş süresi <strong>50 dakikadır</strong> (Çocuk koğuşu için <strong>90 dakikadır</strong>).';
-        }
-
-        // Tüm Ziyaretlerin Listesini Oluştur (Eski haftalar elendi, sadece güncel hafta ve gelecek haftalar)
+        // Tüm Ziyaretlerin Listesini Oluştur
         tumZiyaretlerListesi.innerHTML = gosterilecekZiyaretler.map(v => {
+            const vBaslangicZaman = getZiyaretBaslangicZamani(v);
             const vBitisZaman = getZiyaretBitisZamani(v);
             const isGecti = vBitisZaman < simdiZaman;
+            const isSuAnda = (simdiZaman >= vBaslangicZaman && simdiZaman <= vBitisZaman);
             const isSecili = (v.iso_date === seciliZiyaret.iso_date && v.saa === seciliZiyaret.saa);
             const vIsAcik = v.tur_kodu === 'ACIK';
+            const vTarihObj = parseDate(v.iso_date);
+            const isBuHaftada = (vTarihObj.getTime() >= haftaBilgisi.pazartesi.getTime() && vTarihObj.getTime() <= haftaBilgisi.pazarSonu.getTime());
             
             let durumHtml = '';
             let ekMaddeClass = '';
 
             if (isGecti) {
-                // 2. KURAL: Aynı hafta üzerinde bitmişse tüm satır boydan boya komple çizili!
+                // Aynı hafta üzerinde bitmişse üzeri komple çizili!
                 ekMaddeClass = 'gecmis-madde';
                 durumHtml = '<span class="tga-durum-etiket de-gecti">Geçti</span>';
+            } else if (isSuAnda) {
+                ekMaddeClass = 'aktif-secili ' + (vIsAcik ? 'madde-acik' : 'madde-kapali');
+                durumHtml = '<span class="tga-durum-etiket de-canli">🟢 Şu Anda Yapılıyor</span>';
             } else if (isSecili) {
                 ekMaddeClass = 'aktif-secili ' + (vIsAcik ? 'madde-acik' : 'madde-kapali');
-                durumHtml = '<span class="tga-durum-etiket de-aktif">🎯 Şu Andaki Görüş</span>';
+                if (isBuHaftada) {
+                    durumHtml = '<span class="tga-durum-etiket de-aktif">⏳ Bu Haftaki Görüş</span>';
+                } else {
+                    durumHtml = '<span class="tga-durum-etiket de-siradaki-gelecek">📅 Gelecek Görüş</span>';
+                }
             } else {
                 durumHtml = '<span class="tga-durum-etiket de-sonraki">Gelecek</span>';
             }
@@ -1433,7 +1537,7 @@
             const rozetClass = vIsAcik ? 'tr-acik' : 'tr-kapali';
 
             return `
-                <div class="tga-madde ${ekMaddeClass}" onclick="ziyaretSec('${item.id}', '${v.iso_date}')">
+                <div class="tga-madde ${ekMaddeClass}" data-date="${v.iso_date}" onclick="ziyaretSec('${item.id}', '${v.iso_date}')">
                     <div class="tga-sol">
                         <span class="tga-rozet ${rozetClass}">${v.tur}</span>
                         <span class="tga-tarih">${v.tar}</span>
@@ -1466,34 +1570,17 @@
         const v = item.visits.find(vis => vis.iso_date === isoDate);
         if (!v) return;
 
-        const isAcik = v.tur_kodu === 'ACIK';
-
-        if (isAcik) {
-            merkeziKutu.className = 'merkezi-bilgi-karti kart-acik';
-            kartUstRozet.className = 'kart-rozet rozet-acik';
-            kartUstMetin.textContent = '🟢 BU GÖRÜŞ: AÇIK GÖRÜŞTÜR';
-            vurguKutusu.className = 'gorus-turu-vurgu-kutusu vurgu-acik';
-            gtvTurBaslik.innerHTML = '🟢 AÇIK GÖRÜŞ';
-            gtvDurumMesaji.textContent = '✅ Bu tarihteki ziyaret fiziki engelsiz Açık Görüş olarak yapılacaktır.';
-            kartSaat.style.color = '#15803d';
-        } else {
-            merkeziKutu.className = 'merkezi-bilgi-karti kart-kapali';
-            kartUstRozet.className = 'kart-rozet rozet-kapali';
-            kartUstMetin.textContent = '🔵 BU GÖRÜŞ: KAPALI GÖRÜŞTÜR';
-            vurguKutusu.className = 'gorus-turu-vurgu-kutusu vurgu-kapali';
-            gtvTurBaslik.innerHTML = '🔵 KAPALI GÖRÜŞ';
-            gtvDurumMesaji.textContent = 'ℹ️ Bu tarihteki ziyaret cam ve telefon irtibatıyla Kapalı Görüş olarak yapılacaktır.';
-            kartSaat.style.color = '#1d4ed8';
-        }
-
-        kartTarih.textContent = v.tar;
-        kartGun.textContent = v.gun;
-        kartSaat.textContent = v.saa;
+        kartDetayiniGoster(item, v);
 
         // Maddelerdeki seçili sınıfını güncelle
         document.querySelectorAll('.tga-madde').forEach(el => {
             el.classList.remove('aktif-secili', 'madde-acik', 'madde-kapali');
         });
+
+        const secilenMadde = document.querySelector(`.tga-madde[data-date="${isoDate}"]`);
+        if (secilenMadde && !secilenMadde.classList.contains('gecmis-madde')) {
+            secilenMadde.classList.add('aktif-secili', v.tur_kodu === 'ACIK' ? 'madde-acik' : 'madde-kapali');
+        }
     }
 
     const hataModal = document.getElementById('hataModal');
