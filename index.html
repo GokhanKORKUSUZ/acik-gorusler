@@ -1493,9 +1493,15 @@
             kartUstMetin.textContent = isAcik ? '🟢 CANLI: ŞU ANDA AÇIK GÖRÜŞ YAPILMAKTADIR' : '🔵 CANLI: ŞU ANDA KAPALI GÖRÜŞ YAPILMAKTADIR';
             gtvDurumMesaji.textContent = '⚡ Bu koğuşun ziyareti şu anda aktif olarak devam etmektedir.';
         } else if (isGecti) {
-            if (gtvEtiket) gtvEtiket.textContent = '⌛ GEÇMİŞ GÖRÜŞ RANDEVUSU';
-            kartUstMetin.textContent = '⚠️ BU GÖRÜŞÜN ZAMANI GEÇMİŞTİR';
-            gtvDurumMesaji.textContent = 'Bu tarihteki randevu süresi tamamlanmıştır. Lütfen sıradaki gelecek görüşü inceleyiniz.';
+            if (isBuHaftada) {
+                if (gtvEtiket) gtvEtiket.textContent = '⌛ BU HAFTAKİ GÖRÜŞ (TAMAMLANDI)';
+                kartUstMetin.textContent = isAcik ? '🟢 BU HAFTAKİ AÇIK GÖRÜŞ TAMAMLANDI' : '🔵 BU HAFTAKİ KAPALI GÖRÜŞ TAMAMLANDI';
+                gtvDurumMesaji.textContent = `⚠️ Bu koğuşun bu haftaki (${v.tar} ${v.gun} ${v.saa}) görüş süresi tamamlanmıştır. Sıradaki bir sonraki randevu aşağıda listelenmiştir.`;
+            } else {
+                if (gtvEtiket) gtvEtiket.textContent = '⌛ GEÇMİŞ GÖRÜŞ RANDEVUSU';
+                kartUstMetin.textContent = '⚠️ BU GÖRÜŞÜN ZAMANI GEÇMİŞTİR';
+                gtvDurumMesaji.textContent = 'Bu tarihteki randevu süresi tamamlanmıştır. Lütfen sıradaki gelecek görüşü inceleyiniz.';
+            }
         } else if (isBuHaftada) {
             if (gtvEtiket) gtvEtiket.textContent = '⏳ BU HAFTAKİ GÖRÜŞ RANDEVUSU';
             kartUstMetin.textContent = isAcik ? '🟢 BU HAFTAKİ GÖRÜŞ: AÇIK GÖRÜŞTÜR' : '🔵 BU HAFTAKİ GÖRÜŞ: KAPALI GÖRÜŞTÜR';
@@ -1543,10 +1549,20 @@
             gosterilecekZiyaretler = [item.visits[item.visits.length - 1]];
         }
 
-        // En yakın randevuyu bul (Bitiş saati geçmemiş ilk randevu, hepsi geçmişse ilk gösterilen randevu):
-        let seciliZiyaret = gosterilecekZiyaretler.find(v => getZiyaretBitisZamani(v) >= simdiZaman);
-        if (!seciliZiyaret) {
-            seciliZiyaret = gosterilecekZiyaretler[0];
+        // KULLANICI KURALI: Hafta henüz bitmemişse (Cumartesi'ye kadar),
+        // o koğuşun bu haftaki görüş günü/saati geçmiş olsa dahi ana kartta BU HAFTAKİ görüşünü göster!
+        const buHaftakiZiyaret = gosterilecekZiyaretler.find(v => {
+            const vTarihObj = parseDate(v.iso_date);
+            return vTarihObj.getTime() >= haftaBilgisi.pazartesi.getTime() && vTarihObj.getTime() <= haftaBilgisi.pazarSonu.getTime();
+        });
+
+        let seciliZiyaret = null;
+        if (buHaftakiZiyaret) {
+            // Hafta bitmediği sürece ana kartta BU HAFTA gösterilir (görüşü geçmiş olsa bile)
+            seciliZiyaret = buHaftakiZiyaret;
+        } else {
+            // Bu haftada randevu yoksa en yakın sıradaki randevuyu seç
+            seciliZiyaret = gosterilecekZiyaretler.find(v => getZiyaretBitisZamani(v) >= simdiZaman) || gosterilecekZiyaretler[0];
         }
 
         // Üst kartı doldur
@@ -1567,9 +1583,12 @@
             let ekMaddeClass = '';
 
             if (isGecti) {
-                // Aynı hafta üzerinde bitmişse üzeri komple çizili!
+                // Aynı hafta üzerinde bitmişse
                 ekMaddeClass = 'gecmis-madde';
-                durumHtml = '<span class="tga-durum-etiket de-gecti">Geçti</span>';
+                if (isSecili) ekMaddeClass += ' aktif-secili ' + (vIsAcik ? 'madde-acik' : 'madde-kapali');
+                durumHtml = isBuHaftada 
+                    ? '<span class="tga-durum-etiket de-gecti">Tamamlandı (Bu Hafta)</span>'
+                    : '<span class="tga-durum-etiket de-gecti">Geçti</span>';
             } else if (isSuAnda) {
                 ekMaddeClass = 'aktif-secili ' + (vIsAcik ? 'madde-acik' : 'madde-kapali');
                 durumHtml = '<span class="tga-durum-etiket de-canli">🟢 Şu Anda Yapılıyor</span>';
@@ -1581,7 +1600,13 @@
                     durumHtml = '<span class="tga-durum-etiket de-siradaki-gelecek">📅 Gelecek Görüş</span>';
                 }
             } else {
-                durumHtml = '<span class="tga-durum-etiket de-sonraki">Gelecek</span>';
+                // Eğer bu haftaki görüş geçmişse ve bu madde sıradaki ilk gelecek randevuysa
+                const buHaftaGectiMi = gosterilecekZiyaretler[0] && getZiyaretBitisZamani(gosterilecekZiyaretler[0]) < simdiZaman;
+                if (buHaftaGectiMi && v === gosterilecekZiyaretler[1]) {
+                    durumHtml = '<span class="tga-durum-etiket de-siradaki-gelecek">📅 Sıradaki Gelecek Görüş</span>';
+                } else {
+                    durumHtml = '<span class="tga-durum-etiket de-sonraki">Gelecek</span>';
+                }
             }
 
             const rozetClass = vIsAcik ? 'tr-acik' : 'tr-kapali';
