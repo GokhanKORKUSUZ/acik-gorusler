@@ -1528,7 +1528,7 @@
     }
 
     // Koğuş Kartını Aç ve En Yakın Tarihi Göster
-    function kartAc(kogusId) {
+    function kartAc(kogusId, updateInputValue = true, autoScroll = true) {
         const item = KOGUSLAR.find(k => k.id.toLowerCase() === kogusId.toLowerCase());
         if (!item || !item.visits || item.visits.length === 0) return;
 
@@ -1634,16 +1634,20 @@
             `;
         }).join('');
 
-        kogusInput.value = item.name;
+        if (updateInputValue && kogusInput) {
+            kogusInput.value = item.name;
+        }
         temizleBtn.style.display = 'flex';
         oneriMenusu.style.display = 'none';
 
         // Kartı Aç
         sonucKartiAlani.style.display = 'block';
 
-        setTimeout(() => {
-            sonucKartiAlani.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 80);
+        if (autoScroll) {
+            setTimeout(() => {
+                sonucKartiAlani.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 80);
+        }
     }
 
     // Listeden Spesifik Ziyarete Tıklanınca Kartı Güncelle
@@ -1725,24 +1729,53 @@
 
         const aramaNorm = trNormalize(val);
 
-        // Birebir eşleşme var mı kontrol et (Örn: "a-5" veya "a5" yazınca DİREK ÇIKSIN KART)
-        const tamEslesen = KOGUSLAR.find(k => trNormalize(k.name) === aramaNorm || trNormalize(k.id) === aramaNorm);
-        if (tamEslesen) {
-            kartAc(tamEslesen.id);
+        // Birebir tam eşleşen var mı? (Örn: "e-11", "a-5", "b-12")
+        const tamEslesen = KOGUSLAR.find(k => trNormalize(k.id) === aramaNorm || trNormalize(k.name) === aramaNorm);
+
+        // Bu arama ifadesiyle başlayan DAHA UZUN başka koğuşlar var mı?
+        // (Örneğin kullanıcı "E-1" yazdığında 'e10', 'e11', 'e12' vardır; kullanıcı henüz '1' yazmaya devam ediyor olabilir!)
+        const baskaTurevVarMi = KOGUSLAR.some(k => {
+            const kIdNorm = trNormalize(k.id);
+            return kIdNorm !== aramaNorm && kIdNorm.startsWith(aramaNorm);
+        });
+
+        // Eğer birebir tam eşleştiyse VE başka türevi yoksa (örn: "E-11", "A-5", "B-23" gibi kesin/tekil ise)
+        // Kartı aç; ancak kullanıcının yazdığı metni bozmamak için updateInputValue=false ve autoScroll=false ver
+        if (tamEslesen && !baskaTurevVarMi) {
+            kartAc(tamEslesen.id, false, false);
             oneriMenusu.style.display = 'none';
             return;
         }
 
-        // Eşleşen önerileri bul
+        // Eşleşen önerileri bul ve akıllı sırala (tam başlayanlar ve eşleşenler en üstte)
         const eslesenler = KOGUSLAR.filter(item => {
-            return trNormalize(item.name).includes(aramaNorm) || trNormalize(item.id).includes(aramaNorm);
+            const normId = trNormalize(item.id);
+            const normName = trNormalize(item.name);
+            return normId.includes(aramaNorm) || normName.includes(aramaNorm);
+        }).sort((a, b) => {
+            const aId = trNormalize(a.id);
+            const bId = trNormalize(b.id);
+            const aName = trNormalize(a.name);
+            const bName = trNormalize(b.name);
+
+            const aExact = (aId === aramaNorm || aName === aramaNorm);
+            const bExact = (bId === aramaNorm || bName === aramaNorm);
+            if (aExact && !bExact) return -1;
+            if (!aExact && bExact) return 1;
+
+            const aStarts = (aId.startsWith(aramaNorm) || aName.startsWith(aramaNorm));
+            const bStarts = (bId.startsWith(aramaNorm) || bName.startsWith(aramaNorm));
+            if (aStarts && !bStarts) return -1;
+            if (!aStarts && bStarts) return 1;
+
+            return a.name.localeCompare(b.name, 'tr', { numeric: true });
         }).slice(0, 8);
 
         if (eslesenler.length === 0) {
             oneriMenusu.innerHTML = `
                 <div class="oneri-bos">
                     <span>⚠️</span>
-                    <span>Böyle bir koğuş bulunamadı (Örn: A-5, B-12, Çocuk)</span>
+                    <span>Böyle bir koğuş bulunamadı (Örn: A-5, B-12, E-11, Çocuk)</span>
                 </div>
             `;
             oneriMenusu.style.display = 'block';
@@ -1750,7 +1783,7 @@
         }
 
         oneriMenusu.innerHTML = eslesenler.map(item => `
-            <div class="oneri-madde" onclick="kartAc('${item.id}')">
+            <div class="oneri-madde" onclick="kartAc('${item.id}', true, true)">
                 <div class="om-sol">
                     <span class="om-blok">${item.blok}</span>
                     <span class="om-ad">${item.name}</span>
@@ -1777,13 +1810,13 @@
             }
 
             const aramaNorm = trNormalize(val);
-            let bulunan = KOGUSLAR.find(k => trNormalize(k.name) === aramaNorm || trNormalize(k.id) === aramaNorm);
+            let bulunan = KOGUSLAR.find(k => trNormalize(k.id) === aramaNorm || trNormalize(k.name) === aramaNorm);
             if (!bulunan) {
                 bulunan = KOGUSLAR.find(k => trNormalize(k.name).includes(aramaNorm) || trNormalize(k.id).includes(aramaNorm));
             }
 
             if (bulunan) {
-                kartAc(bulunan.id);
+                kartAc(bulunan.id, true, true);
             } else {
                 hataModalGoster(val);
             }
@@ -1807,12 +1840,12 @@
             return;
         }
         const aramaNorm = trNormalize(val);
-        let bulunan = KOGUSLAR.find(k => trNormalize(k.name) === aramaNorm || trNormalize(k.id) === aramaNorm);
+        let bulunan = KOGUSLAR.find(k => trNormalize(k.id) === aramaNorm || trNormalize(k.name) === aramaNorm);
         if (!bulunan) {
             bulunan = KOGUSLAR.find(k => trNormalize(k.name).includes(aramaNorm) || trNormalize(k.id).includes(aramaNorm));
         }
         if (bulunan) {
-            kartAc(bulunan.id);
+            kartAc(bulunan.id, true, true);
         } else {
             hataModalGoster(val);
         }
