@@ -896,11 +896,10 @@ Bulunduğu Koğuş/Oda  : ${iRoom}
 ${cMsg}
 
 ------------------------------------------------------------
-Yukarıda belirttiğim bilgi ve açıklamalarımın 3071 sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun ve ilgili mevzuat uyarınca incelenerek gereğinin yapılmasını ve tarafıma iletişim bilgilerim üzerinden bilgi verilmesini arz ve talep ederim.
+Gereğinin yapılmasını saygılarımla arz ederim.
 
 Başvuru Sahibi:
-${sName}
-İmza / E-Posta Onaylı`;
+${sName}`;
     }
 
     // ÖNİZLEMEYİ GÜNCELLE
@@ -963,7 +962,17 @@ ${sName}
         return isValid;
     }
 
-    // 1. GMAIL İLE DİREKT GÖNDER (TEK TIKLA AÇILIR)
+    // CİHAZ TESPİTİ (MOBİL / ANDROID / IOS)
+    function isAndroidDevice() {
+        return /Android/i.test(navigator.userAgent);
+    }
+
+    function isIosDevice() {
+        return /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+               (navigator.maxTouchPoints && navigator.maxTouchPoints > 2 && /Macintosh/.test(navigator.userAgent));
+    }
+
+    // 1. GMAIL İLE GÖNDER (TELEFONDA GMAIL UYGULAMASINI, BİLGİSAYARDA WEB PANELİNİ AÇAR)
     function handleSendGmailWeb() {
         if (!validateForm()) {
             showModal('⚠️ Lütfen Eksik Alanları Doldurunuz', 'Kırmızı ile işaretli zorunlu alanları (T.C., Telefon, Hükümlü Anne-Baba adı vb.) eksiksiz doldurunuz.', '❌');
@@ -974,8 +983,50 @@ ${sName}
         const subject = `[Şikayet/Talep] ${complaintSubject.value.trim()} - Hükümlü: ${inmateName.value.trim()}`;
         const body = generatePetitionText();
 
-        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(toEmail)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        const win = window.open(gmailUrl, '_blank');
+        const encTo = encodeURIComponent(toEmail);
+        const encSubject = encodeURIComponent(subject);
+        const encBody = encodeURIComponent(body);
+
+        // 1. ANDROID TELEFONLAR: Doğrudan Cihazdaki Resmi Gmail Uygulamasını Açar
+        if (isAndroidDevice()) {
+            const androidGmailIntent = `intent:${encTo}?subject=${encSubject}&body=${encBody}#Intent;action=android.intent.action.SENDTO;scheme=mailto;package=com.google.android.gm;end`;
+            const mailtoFallback = `mailto:${encTo}?subject=${encSubject}&body=${encBody}`;
+
+            const link = document.createElement('a');
+            link.href = androidGmailIntent;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Eğer Gmail uygulaması yoksa veya sistem intenti engellerse yedek olarak standart e-posta tetikle
+            setTimeout(() => {
+                if (!document.hidden) {
+                    window.location.href = mailtoFallback;
+                }
+            }, 600);
+            return;
+        }
+
+        // 2. IPHONE / IPAD (IOS): Yüklüyse Gmail Uygulamasını Açar, Değilse Standart Mail'i Açar
+        if (isIosDevice()) {
+            const iosGmailAppUrl = `googlegmail:///co?to=${encTo}&subject=${encSubject}&body=${encBody}`;
+            const mailtoUrl = `mailto:${encTo}?subject=${encSubject}&body=${encBody}`;
+
+            const startTime = Date.now();
+            window.location.href = iosGmailAppUrl;
+
+            // Gmail uygulaması yüklü değilse standart e-posta istemcisine yönlendir
+            setTimeout(() => {
+                if (!document.hidden && (Date.now() - startTime < 1500)) {
+                    window.location.href = mailtoUrl;
+                }
+            }, 700);
+            return;
+        }
+
+        // 3. MASAÜSTÜ BİLGİSAYAR: Tarayıcıda Doğrudan Gmail Web Sekmesi Açar
+        const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encTo}&su=${encSubject}&body=${encBody}`;
+        const win = window.open(gmailWebUrl, '_blank');
         
         if (win) {
             showModal(
@@ -988,7 +1039,7 @@ ${sName}
             showModal(
                 'Açılır Pencere Engellendi',
                 `<p>Lütfen aşağıdaki bağlantıya tıklayarak Gmail'i açınız:</p><br>
-                <a href="${gmailUrl}" target="_blank" style="background:#ea4335;color:#fff;padding:8px 16px;border-radius:6px;text-decoration:none;font-weight:bold;">Doğrudan Gmail'i Aç</a>`,
+                <a href="${gmailWebUrl}" target="_blank" style="background:#ea4335;color:#fff;padding:8px 16px;border-radius:6px;text-decoration:none;font-weight:bold;display:inline-block;">Doğrudan Gmail'i Aç</a>`,
                 '⚠️'
             );
         }
